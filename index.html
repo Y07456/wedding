@@ -248,7 +248,7 @@
             padding: 35px 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
             border-left: 5px solid var(--primary-amber);
-            text-align: left;
+            text-align: center;
         }
 
         .v-card-title {
@@ -441,6 +441,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#about" class="nav-link">關於我們</a>
+            <a href="#gallery" class="nav-link">我們的婚紗照</a>
             <a href="#details" class="nav-link">婚禮詳情</a>
             <a href="#rsvp" class="nav-link">出席回函</a>
         </div>
@@ -474,11 +475,6 @@
                 <div class="timer-divider"></div>
                 <div class="timer-label">MINS<br>分</div>
             </div>
-            <div class="timer-card">
-                <div class="timer-number" id="seconds">00</div>
-                <div class="timer-divider"></div>
-                <div class="timer-label">SECS<br>秒</div>
-            </div>
         </div>
     </section>
 
@@ -491,10 +487,20 @@
             <p class="about-text">
                 兩個同屆的人，在台南出生長大，在台北、歐洲生活，可能曾有著無數個擦肩而過，命運終於將我們兩人的道路交織，從相識、相知、相愛、相惜，我們決定一起攜手走一輩子，邀請您一起來見證我們的起點，分享我們的喜悅，享受南霸天總舖師阿勇師的手路菜。
             </p>
-
+        </div>
+    </section>
+    
+    <section id="gallery" class="gallery-section">
+        <div class="section-title">GALLERY</div>
+        <div class="section-subtitle">我們的婚紗照</div>
+        
             <div class="photo-gallery">
-                <img src="https://raw.githubusercontent.com/Y07456/wedding/main/DSC00159.jpg" alt="宇哲與韋伶 婚紗照 1">
+                <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00159.jpg" alt="宇哲與韋伶 婚紗照 1">
                 <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00361.jpg" alt="宇哲與韋伶 婚紗照 2">
+                <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00186.jpg" alt="宇哲與韋伶 婚紗照 3">
+                <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00284.jpg" alt="宇哲與韋伶 婚紗照 4">
+                <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00129.jpg" alt="宇哲與韋伶 婚紗照 5">
+                <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00129.jpg" alt="宇哲與韋伶 婚紗照 6">
             </div>
         </div>
     </section>
@@ -576,42 +582,37 @@
                 <input type="text" id="entry_contact" name="entry.2029044368" class="form-control" value="" placeholder="請輸入 Email 或電話" required>
             </div>
 
-            <!-- 欄位 3：與新人關係 -->
-            <div class="form-group">
-                <label class="form-label" for="entry_relation">
-                    與新人關係<span class="en">RELATIONSHIP</span> *
-                </label>
-                <select id="entry_relation" name="entry.779943828" class="form-control" required>
-                    <option value="" disabled selected>請選擇關係</option>
-                    <option value="新郎家人">新郎家人</option>
-                    <option value="新娘家人">新娘家人</option>
-                    <option value="新郎朋友">新郎朋友</option>
-                    <option value="新娘朋友">新娘朋友</option>
-                    <option value="共同朋友">共同朋友</option>
-                </select>
-            </div>
-
-            <!-- 欄位 4：出席狀況/人數 -->
+            <!-- 欄位 3：出席人數 -->
             <div class="form-group">
                 <label class="form-label" for="entry_attend">
-                    出席狀況 / 人數<span class="en">ATTENDANCE</span> *
+                    出席人數<span class="en">ATTENDANCE</span> *
                 </label>
-                <select id="entry_attend" name="entry.2113314783" class="form-control" required>
-                    <option value="" disabled selected>請選擇出席狀況</option>
-                    <option value="1位出席">1位出席</option>
-                    <option value="2位出席">2位出席</option>
-                    <option value="3位出席">3位出席</option>
-                    <option value="4位以上出席">4位以上出席</option>
-                    <option value="無法出席，獻上祝福">無法出席，獻上祝福</option>
+                <input type="text" id="entry_attend" name="entry.2113314783" class="form-control" value="" placeholder="例：2位出席 或 無法出席" required>
+            </div>
+            <!-- 欄位 4：素食人數 -->
+            <div class="form-group">
+                <label class="form-label" for="entry_attend">
+                    素食人數<span class="en">Vegetarian</span> *
+                </label>
+                <input type="text" id="entry_attend" name="entry.1241370169" class="form-control" value="" placeholder="例：2位出席 或 無法出席" required>
+            </div>
+            <!-- 5. 是否需要嬰兒座椅 (entry.1240311188) -->
+            <div class="form-group">
+                <label class="form-label" for="entry_paper">
+                    是否需要兒童座椅<span class="en">HIGH CHAIR NEEDED</span> *
+                </label>
+                <select id="entry_paper" name="entry.1240311188" class="form-control" required>
+                    <option value="" disabled selected>是否需要兒童座椅</option>
+                    <option value="是">是</option>
+                    <option value="否">否</option>
                 </select>
             </div>
-
-            <!-- 欄位 5：飲食需求或祝福 -->
+            <!-- 欄位 6：給新人的祝福 -->
             <div class="form-group">
                 <label class="form-label" for="entry_note">
-                    飲食需求與祝福<span class="en">DIET &amp; MESSAGE</span>
+                    給新人的祝福<span class="en">DIET &amp; MESSAGE</span>
                 </label>
-                <input type="text" id="entry_note" name="entry.1241370169" class="form-control" value="" placeholder="如：葷/素食人數或想對我們說的話">
+                <input type="text" id="entry_note" name="entry.1471678889" class="form-control" value="" placeholder="如：葷/素食人數或想對我們說的話">
             </div>
 
             <button type="submit" class="submit-btn">確認送出 / SUBMIT</button>
