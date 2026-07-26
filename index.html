@@ -80,13 +80,14 @@
             color: var(--primary-amber);
         }
 
-        /* 3. Hero 全螢幕封面 */
+        /* 3. Hero 全螢幕封面（修復：調降遮罩濃度，還原照片原色） */
         .hero {
             position: relative;
             height: 100vh;
             width: 100%;
-            background: linear-gradient(rgba(30, 27, 75, 0.45), rgba(30, 27, 75, 0.55)), 
-                        url('https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00354.jpg') center/cover no-repeat;
+            /* 改用極薄的中性黑色陰影 (透明度 0.15 ~ 0.35)，照片不會發紫，顏色自然明亮 */
+            background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.35)), 
+                    url('https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00354.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
