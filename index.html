@@ -228,7 +228,92 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
         }
 
-        /* 6. 婚禮詳情 V-Card Section */
+        /* 6. 婚紗相片區塊（修改：優化縮圖對焦與懸停效果） */
+        .gallery-section {
+            padding: 80px 20px;
+            background-color: #f7f4ef;
+            text-align: center;
+        }
+
+        .gallery-hint {
+            font-size: 0.85rem;
+            color: var(--secondary-sage);
+            margin-top: -30px;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .photo-gallery img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            object-position: top center; /* 重點：優先定位頭部，防止切到頭 */
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-gallery img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 163, 115, 0.3);
+        }
+
+        /* 7. 全螢幕相片燈箱 Modal（新增：點擊開全圖） */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            cursor: pointer;
+        }
+
+        .modal-content {
+            max-width: 92%;
+            max-height: 90vh;
+            object-fit: contain; /* 保證全圖完整顯示、不裁切 */
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #ffffff;
+            font-size: 38px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--primary-amber);
+        }
+        /* 8. 婚禮詳情 V-Card Section */
         .details-section {
             padding: 80px 20px;
             background-color: #f4f0eb;
@@ -248,7 +333,7 @@
             padding: 35px 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
             border-left: 5px solid var(--primary-amber);
-            text-align: center;
+            text-align: left;
         }
 
         .v-card-title {
@@ -280,7 +365,7 @@
             background-color: #788d84;
         }
 
-        /* 7. 隱藏式摺疊交通面板 (Accordion) */
+        /* 9. 隱藏式摺疊交通面板 (Accordion) */
         .accordion-wrapper {
             margin-top: 15px;
         }
@@ -327,7 +412,7 @@
             color: var(--text-muted);
         }
 
-        /* 8. 出席回函表單 Section */
+        /* 10. 出席回函 RSVP Section */
         .rsvp-section {
             padding: 80px 20px;
             max-width: 650px;
@@ -424,10 +509,13 @@
             background-color: #f4f0eb;
         }
 
+        @media (max-width: 768px) {
+            .photo-gallery { grid-template-columns: 1fr; }
+        }
+
         @media (max-width: 600px) {
             .hero-title-en { font-size: 2.8rem; }
             .hero-names { font-size: 1.8rem; }
-            .photo-gallery { grid-template-columns: 1fr; }
             .timer-card { min-width: 110px; padding: 15px 12px; }
             .timer-number { font-size: 2.2rem; }
             .v-card { padding: 25px 20px; }
@@ -490,19 +578,19 @@
         </div>
     </section>
     
+    <!-- 婚紗相片 Gallery (修改：綁定 openModal 點擊事件) -->
     <section id="gallery" class="gallery-section">
         <div class="section-title">GALLERY</div>
         <div class="section-subtitle">我們的婚紗照</div>
+        <div class="gallery-hint">（點擊相片可觀賞全圖）</div>
         
-            <div class="photo-gallery">
-                <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00159.jpg" alt="宇哲與韋伶 婚紗照 1">
-                <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00361.jpg" alt="宇哲與韋伶 婚紗照 2">
-                <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00186.jpg" alt="宇哲與韋伶 婚紗照 3">
-                <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00284.jpg" alt="宇哲與韋伶 婚紗照 4">
-                <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00129.jpg" alt="宇哲與韋伶 婚紗照 5">
-                <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00129.jpg" alt="宇哲與韋伶 婚紗照 6">
-            </div>
-        </div>
+        <div class="photo-gallery">
+            <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00159.jpg" alt="宇哲與韋伶 婚紗照 1" onclick="openModal(this.src)">
+            <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00361.jpg" alt="宇哲與韋伶 婚紗照 2" onclick="openModal(this.src)">
+            <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00186.jpg" alt="宇哲與韋伶 婚紗照 3" onclick="openModal(this.src)">
+            <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00284.jpg" alt="宇哲與韋伶 婚紗照 4" onclick="openModal(this.src)">
+            <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00129.jpg" alt="宇哲與韋伶 婚紗照 5" onclick="openModal(this.src)">
+            <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00129.jpg" alt="宇哲與韋伶 婚紗照 6" onclick="openModal(this.src)">
         </div>
     </section>
 
@@ -623,6 +711,11 @@
             </div>
         </form>
     </section>
+    <!-- 全螢幕相片燈箱 Modal 結構（新增） -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage" alt="婚紗照全圖">
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -668,6 +761,25 @@
             }, 6000);
             submitted = false;
         }
+        // 3. 全螢幕相片燈箱控制邏輯（新增）
+        function openModal(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'flex';
+            modalImg.src = src;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // 支援按 Esc 鍵關閉燈箱
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+        
     </script>
 </body>
 </html>
