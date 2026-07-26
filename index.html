@@ -503,6 +503,7 @@
                 <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00129.jpg" alt="宇哲與韋伶 婚紗照 6">
             </div>
         </div>
+        </div>
     </section>
 
     <!-- 婚禮詳情 V-Card Section -->
@@ -591,10 +592,10 @@
             </div>
             <!-- 欄位 4：素食人數 -->
             <div class="form-group">
-                <label class="form-label" for="entry_attend">
+                <label class="form-label" for="veg">
                     素食人數<span class="en">Vegetarian</span> *
                 </label>
-                <input type="text" id="entry_attend" name="entry.1241370169" class="form-control" value="" placeholder="例：2位出席 或 無法出席" required>
+                <input type="text" id="entry_veg" name="entry.1241370169" class="form-control" value="" placeholder="例：2位出席 或 無法出席" required>
             </div>
             <!-- 5. 是否需要嬰兒座椅 (entry.1240311188) -->
             <div class="form-group">
@@ -641,17 +642,14 @@
                 const days = Math.floor(difference / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
                 document.getElementById('days').innerText = String(days).padStart(2, '0');
                 document.getElementById('hours').innerText = String(hours).padStart(2, '0');
                 document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
             } else {
                 document.getElementById('days').innerText = '00';
                 document.getElementById('hours').innerText = '00';
                 document.getElementById('minutes').innerText = '00';
-                document.getElementById('seconds').innerText = '00';
             }
         }
 
