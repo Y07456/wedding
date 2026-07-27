@@ -773,7 +773,61 @@
                 closeModal();
             }
         });
-        
+        // 🎨 4. 給老婆專屬的「即時配色切換盤」元件
+    const themes = {
+        purple: { name: '皇家藍紫', primary: '#5B3CC4', secondary: '#8B5CF6', bg: '#F3F0FF', text: '#1E1B4B' },
+        amber:  { name: '莫蘭迪暖陽', primary: '#D4A373', secondary: '#8DA399', bg: '#FAF8F5', text: '#2B2B2B' },
+        rose:   { name: '溫柔奶茶粉', primary: '#C48B71', secondary: '#A38F85', bg: '#FAF5F3', text: '#3A2E2B' },
+        blue:   { name: '經典霧灰藍', primary: '#5A738E', secondary: '#8DA1B3', bg: '#F2F5F8', text: '#1C2833' },
+        green:  { name: '森林橄欖綠', primary: '#556B2F', secondary: '#8F9779', bg: '#F5F7F2', text: '#222B18' },
+        wine:   { name: '勃艮第紅酒', primary: '#800020', secondary: '#B35A66', bg: '#FAF4F5', text: '#2B1216' }
+    };
+
+    function changeTheme(key) {
+        const t = themes[key];
+        document.documentElement.style.setProperty('--primary-amber', t.primary);
+        document.documentElement.style.setProperty('--secondary-sage', t.secondary);
+        document.documentElement.style.setProperty('--bg-warm', t.bg);
+        document.documentElement.style.setProperty('--text-dark', t.text);
+    }
+
+    // 動態加入切換按鈕面板
+    window.addEventListener('DOMContentLoaded', () => {
+        const panel = document.createElement('div');
+        panel.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(10px);
+            padding: 12px 15px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(0,0,0,0.08);
+        `;
+
+        let html = '<span style="font-size:0.8rem; font-weight:600; color:#555; margin-right:2px;">🎨 試穿配色：</span>';
+        Object.keys(themes).forEach(key => {
+            const t = themes[key];
+            html += `<button onclick="changeTheme('${key}')" title="${t.name}" style="
+                width: 26px;
+                height: 26px;
+                border-radius: 50%;
+                border: 2px solid #fff;
+                background: ${t.primary};
+                cursor: pointer;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+                transition: transform 0.2s;
+            " onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"></button>`;
+        });
+
+        panel.innerHTML = html;
+        document.body.appendChild(panel);
+    });
     </script>
 </body>
 </html>
