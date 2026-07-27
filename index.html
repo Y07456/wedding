@@ -219,8 +219,8 @@
 
         /* 6. 婚紗相片區塊 (Gallery) */
         .gallery-section {
-            padding: 80px 20px;
-            background-color: #EBE5FF;
+            background-color: var(--bg-warm); /* 使用全頁背景變數 */
+            filter: brightness(0.97);         /* 自動產生微深色階，與上一區塊區隔 */;
             text-align: center;
         }
 
@@ -307,7 +307,8 @@
         /* 8. 婚禮詳情 V-Card Section */
         .details-section {
             padding: 80px 20px;
-            background-color: #E8E2FC;
+            background-color: var(--bg-warm); /* 使用全頁背景變數 */
+            filter: brightness(0.95);         /* 自動產生微深色階 */
         }
 
         .v-card-container {
@@ -773,7 +774,7 @@
                 closeModal();
             }
         });
-        // 🎨 4. 給老婆專屬的「即時配色切換盤」元件
+        // 🎨 4. 完全動態無死角切換盤
     const themes = {
         purple: { name: '皇家藍紫', primary: '#5B3CC4', secondary: '#8B5CF6', bg: '#F3F0FF', text: '#1E1B4B' },
         amber:  { name: '莫蘭迪暖陽', primary: '#D4A373', secondary: '#8DA399', bg: '#FAF8F5', text: '#2B2B2B' },
@@ -791,7 +792,7 @@
         document.documentElement.style.setProperty('--text-dark', t.text);
     }
 
-    // 動態加入切換按鈕面板
+    // 動態加入試穿切換面板
     window.addEventListener('DOMContentLoaded', () => {
         const panel = document.createElement('div');
         panel.style.cssText = `
