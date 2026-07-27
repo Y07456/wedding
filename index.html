@@ -568,7 +568,7 @@
 
         <div class="about-content">
             <p class="about-text">
-                兩個同屆的台南囡仔，轉了台北一圈，也去了歐洲看世界。經歷了無數次擦肩而過，最後還是被命運圈在一起，決定要牽手走一輩子！我們的愛情故事即將邁入新篇章，誠摯邀請最親愛的您，一起來見證我們的幸福起點。現場我們準備了台南辦桌南霸天「阿勇師」的手路菜，用最在地的澎湃美味，好好款待大家！。
+                兩個同屆的台南囡仔，轉了台北一圈，也去了歐洲看世界。經歷了無數次擦肩而過，最後還是被命運圈在一起，決定要牽手走一輩子！我們的愛情故事即將邁入新篇章，誠摯邀請最親愛的您，一起來見證我們的幸福起點。現場我們準備了台南辦桌南霸天「阿勇師」的手路菜，用最在地的澎湃美味，好好款待大家！
             </p>
         </div>
     </section>
@@ -774,8 +774,8 @@
                 closeModal();
             }
         });
-        // 🎨 4. 完全動態無死角切換盤
-    const themes = {
+        // 🎨 4. 高階「自訂顏色控制台」系統
+    const presets = {
         purple: { name: '皇家藍紫', primary: '#5B3CC4', secondary: '#8B5CF6', bg: '#F3F0FF', text: '#1E1B4B' },
         amber:  { name: '莫蘭迪暖陽', primary: '#D4A373', secondary: '#8DA399', bg: '#FAF8F5', text: '#2B2B2B' },
         rose:   { name: '溫柔奶茶粉', primary: '#C48B71', secondary: '#A38F85', bg: '#FAF5F3', text: '#3A2E2B' },
@@ -784,50 +784,97 @@
         wine:   { name: '勃艮第紅酒', primary: '#800020', secondary: '#B35A66', bg: '#FAF4F5', text: '#2B1216' }
     };
 
-    function changeTheme(key) {
-        const t = themes[key];
-        document.documentElement.style.setProperty('--primary-amber', t.primary);
-        document.documentElement.style.setProperty('--secondary-sage', t.secondary);
-        document.documentElement.style.setProperty('--bg-warm', t.bg);
-        document.documentElement.style.setProperty('--text-dark', t.text);
+    function updateColorVal(varName, colorVal) {
+        document.documentElement.style.setProperty(varName, colorVal);
     }
 
-    // 動態加入試穿切換面板
+    function applyPreset(key) {
+        const p = presets[key];
+        document.getElementById('picker-primary').value = p.primary;
+        document.getElementById('picker-secondary').value = p.secondary;
+        document.getElementById('picker-bg').value = p.bg;
+        document.getElementById('picker-text').value = p.text;
+
+        updateColorVal('--primary-amber', p.primary);
+        updateColorVal('--secondary-sage', p.secondary);
+        updateColorVal('--bg-warm', p.bg);
+        updateColorVal('--text-dark', p.text);
+    }
+
+    function copyCssConfig() {
+        const primary = document.getElementById('picker-primary').value;
+        const secondary = document.getElementById('picker-secondary').value;
+        const bg = document.getElementById('picker-bg').value;
+        const text = document.getElementById('picker-text').value;
+
+        const cssText = `:root {\n  --primary-amber: ${primary};\n  --secondary-sage: ${secondary};\n  --bg-warm: ${bg};\n  --text-dark: ${text};\n}`;
+        navigator.clipboard.writeText(cssText);
+        alert('已複製挑選好的色彩 CSS！直接貼回 :root 即可：\n\n' + cssText);
+    }
+
+    // 建構控制台 DOM
     window.addEventListener('DOMContentLoaded', () => {
-        const panel = document.createElement('div');
-        panel.style.cssText = `
+        const studio = document.createElement('div');
+        studio.id = 'colorStudio';
+        studio.style.cssText = `
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 9999;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(10px);
-            padding: 12px 15px;
-            border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border: 1px solid rgba(0,0,0,0.08);
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            padding: 16px 20px;
+            border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+            border: 1px solid rgba(0,0,0,0.1);
+            font-family: sans-serif;
+            font-size: 0.85rem;
+            color: #333;
+            max-width: 310px;
         `;
 
-        let html = '<span style="font-size:0.8rem; font-weight:600; color:#555; margin-right:2px;">🎨 試穿配色：</span>';
-        Object.keys(themes).forEach(key => {
-            const t = themes[key];
-            html += `<button onclick="changeTheme('${key}')" title="${t.name}" style="
-                width: 26px;
-                height: 26px;
-                border-radius: 50%;
-                border: 2px solid #fff;
-                background: ${t.primary};
-                cursor: pointer;
-                box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-                transition: transform 0.2s;
-            " onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'"></button>`;
+        let presetBtnsHtml = '';
+        Object.keys(presets).forEach(key => {
+            const p = presets[key];
+            presetBtnsHtml += `<button onclick="applyPreset('${key}')" title="${p.name}" style="width:22px; height:22px; border-radius:50%; border:2px solid #fff; background:${p.primary}; cursor:pointer; box-shadow:0 2px 5px rgba(0,0,0,0.2);"></button>`;
         });
 
-        panel.innerHTML = html;
-        document.body.appendChild(panel);
+        studio.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; font-weight:bold; border-bottom:1px solid #eee; padding-bottom:8px;">
+                <span>🎨 自由調色控制台</span>
+                <span onclick="document.getElementById('colorStudio').style.display='none'" style="cursor:pointer; color:#999; font-size:1.1rem;">✕</span>
+            </div>
+            
+            <div style="margin-bottom:12px; display:flex; align-items:center; gap:6px;">
+                <span style="font-size:0.75rem; color:#666;">快捷方案：</span>
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">${presetBtnsHtml}</div>
+            </div>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:12px;">
+                <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                    <input type="color" id="picker-bg" value="#F3F0FF" onchange="updateColorVal('--bg-warm', this.value)" style="border:none; width:28px; height:28px; cursor:pointer; background:none;">
+                    <span>全頁背景底色</span>
+                </label>
+                <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                    <input type="color" id="picker-text" value="#1E1B4B" onchange="updateColorVal('--text-dark', this.value)" style="border:none; width:28px; height:28px; cursor:pointer; background:none;">
+                    <span>主要文字顏色</span>
+                </label>
+                <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                    <input type="color" id="picker-primary" value="#5B3CC4" onchange="updateColorVal('--primary-amber', this.value)" style="border:none; width:28px; height:28px; cursor:pointer; background:none;">
+                    <span>主主題色彩</span>
+                </label>
+                <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                    <input type="color" id="picker-secondary" value="#8B5CF6" onchange="updateColorVal('--secondary-sage', this.value)" style="border:none; width:28px; height:28px; cursor:pointer; background:none;">
+                    <span>副主題色彩</span>
+                </label>
+            </div>
+
+            <button onclick="copyCssConfig()" style="width:100%; padding:8px; background:#5B3CC4; color:#fff; border:none; border-radius:10px; font-weight:bold; cursor:pointer; font-size:0.8rem;">
+                📋 複製我搭配好的顏色 CSS
+            </button>
+        `;
+
+        document.body.appendChild(studio);
     });
     </script>
 </body>
