@@ -217,45 +217,117 @@
             text-align: justify;
         }
 
-        /* 6. 婚紗相片區塊 (Gallery) */
-        .gallery-section {
-            background-color: var(--bg-warm); /* 使用全頁背景變數 */
-            filter: brightness(0.97);         /* 自動產生微深色階，與上一區塊區隔 */;
-            text-align: center;
-        }
+        /* 6. 婚紗相片輪播區塊 (Slider Gallery CSS) */
+.gallery-section {
+    padding: 80px 20px;
+    background-color: var(--bg-warm);
+    filter: brightness(0.97);
+    text-align: center;
+}
 
-        .gallery-hint {
-            font-size: 0.85rem;
-            color: var(--secondary-sage);
-            margin-top: -30px;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
+.gallery-hint {
+    font-size: 0.85rem;
+    color: var(--secondary-sage);
+    margin-top: -30px;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
 
-        .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+/* 輪播主外框 */
+.slider-container {
+    position: relative;
+    max-width: 800px;
+    height: 520px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: #000000; /* 留白區域以高質感深色為底 */
+}
 
-        .photo-gallery img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            object-position: top center;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+/* 相片容器 */
+.slider-wrapper {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
 
-        .photo-gallery img:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(91, 60, 196, 0.3);
-        }
+.slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 完整顯示照片，絕不切頭 */
+    cursor: pointer;
+}
+
+/* 左右切換按鈕 */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(4px);
+    color: var(--text-dark);
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn { left: 15px; }
+.next-btn { right: 15px; }
+
+/* 底部小圓點點 */
+.dots-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--secondary-sage);
+    opacity: 0.4;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    opacity: 1;
+    background-color: var(--primary-amber);
+    transform: scale(1.3);
+    border-radius: 8px;
+    width: 22px; /* 當前圓點變長圓形，質感更佳 */
+}
+
+@media (max-width: 600px) {
+    .slider-container { height: 380px; }
+    .slider-btn { width: 36px; height: 36px; font-size: 1rem; }
+}
 
         /* 7. 全螢幕相片燈箱 Modal */
         .modal {
@@ -574,20 +646,32 @@
     </section>
     
     <!-- 婚紗相片 Gallery (修改：綁定 openModal 點擊事件) -->
-    <section id="gallery" class="gallery-section">
-        <div class="section-title">GALLERY</div>
-        <div class="section-subtitle">我們的婚紗照</div>
-        <div class="gallery-hint">（點擊相片可觀賞全圖）</div>
-        
-        <div class="photo-gallery">
-            <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/CDSC01044.jpg" alt="宇哲與韋伶 婚紗照 1" onclick="openModal(this.src)">
-            <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00183.jpg" alt="宇哲與韋伶 婚紗照 2" onclick="openModal(this.src)">
-            <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00352.jpg" alt="宇哲與韋伶 婚紗照 3" onclick="openModal(this.src)">
-            <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00167.jpg" alt="宇哲與韋伶 婚紗照 4" onclick="openModal(this.src)">
-            <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00366.jpg" alt="宇哲與韋伶 婚紗照 5" onclick="openModal(this.src)">
-            <img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00129.jpg" alt="宇哲與韋伶 婚紗照 6" onclick="openModal(this.src)">
+<!-- 6. 婚紗相片輪播區塊 (Slider Gallery) -->
+<section id="gallery" class="gallery-section">
+    <div class="section-title">GALLERY</div>
+    <div class="section-subtitle">我們的婚紗照</div>
+    <div class="gallery-hint">（點擊相片可觀賞全圖）</div>
+    
+    <!-- 輪播主容器 -->
+    <div class="slider-container" id="sliderContainer">
+        <!-- 左右切換按鈕 -->
+        <button class="slider-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="slider-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
+
+        <!-- 相片幻燈片列表 -->
+        <div class="slider-wrapper" id="sliderWrapper">
+            <div class="slide"><img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00159.jpg" alt="婚紗照 1" onclick="openModal(this.src)"></div>
+            <div class="slide"><img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00361.jpg" alt="婚紗照 2" onclick="openModal(this.src)"></div>
+            <div class="slide"><img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00186.jpg" alt="婚紗照 3" onclick="openModal(this.src)"></div>
+            <div class="slide"><img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00284.jpg" alt="婚紗照 4" onclick="openModal(this.src)"></div>
+            <div class="slide"><img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00129.jpg" alt="婚紗照 5" onclick="openModal(this.src)"></div>
+            <div class="slide"><img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00129.jpg" alt="婚紗照 6" onclick="openModal(this.src)"></div>
         </div>
-    </section>
+    </div>
+
+    <!-- 底部小點點導航列 -->
+    <div class="dots-container" id="dotsContainer"></div>
+</section>
 
     <!-- 婚禮詳情 V-Card Section -->
     <section id="details" class="details-section">
@@ -774,7 +858,73 @@
                 closeModal();
             }
         });
-        // 🎨 4. 高階「自訂顏色控制台」系統
+        // 🎠 4. 相片輪播 (Slider / Carousel) 邏輯
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const sliderWrapper = document.getElementById('sliderWrapper');
+    const dotsContainer = document.getElementById('dotsContainer');
+    let autoSlideTimer = null;
+
+    // 動態生成底部小圓點
+    function createDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    // 更新滑動位置與圓點狀態
+    function updateSlide() {
+        sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
+            if (index === currentIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    function moveSlide(direction) {
+        currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
+        updateSlide();
+        resetAutoSlide();
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
+        updateSlide();
+        resetAutoSlide();
+    }
+
+    // 自動輪播（每 4 秒切換下一張）
+    function startAutoSlide() {
+        autoSlideTimer = setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlide();
+        }, 4000);
+    }
+
+    function resetAutoSlide() {
+        clearInterval(autoSlideTimer);
+        startAutoSlide();
+    }
+
+    // 初始化輪播
+    createDots();
+    startAutoSlide();
+
+    // 滑鼠移入照片時暫停播放，移出繼續播放
+    const sliderContainer = document.getElementById('sliderContainer');
+    sliderContainer.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
+    sliderContainer.addEventListener('mouseleave', startAutoSlide)
+        // 🎨 5. 高階「自訂顏色控制台」系統
     const presets = {
         purple: { name: '皇家藍紫', primary: '#5B3CC4', secondary: '#8B5CF6', bg: '#F3F0FF', text: '#1E1B4B' },
         amber:  { name: '莫蘭迪暖陽', primary: '#D4A373', secondary: '#8DA399', bg: '#FAF8F5', text: '#2B2B2B' },
