@@ -11,14 +11,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+TC:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* 1. 全局變數：高飽和皇家藍紫主題色 */
+        /* 1. 全局變數 */
         :root {
             --primary-amber: #893f06;
             --secondary-sage: #180101;
             --bg-warm: #faf8f5;
             --text-dark: #2b2b2b;
             --card-white: #ffffff;        /* 純白卡片 */
-            --text-muted: #605A88;        /* 藍紫灰次要文字 */
+            --text-muted: #605A88;        /* 次要文字 */
             --font-en: 'Cormorant Garamond', serif;
             --font-zh: 'Noto Serif TC', serif;
         }
@@ -51,10 +51,10 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(91, 60, 196, 0.15);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
             padding: 15px 0;
         }
 
@@ -80,14 +80,13 @@
             color: var(--primary-amber);
         }
 
-        /* 3. Hero 全螢幕封面（修復：調降遮罩濃度，還原照片原色） */
+        /* 3. Hero 全螢幕封面 */
         .hero {
             position: relative;
             height: 100vh;
             width: 100%;
-            /* 改用極薄的中性黑色陰影 (透明度 0.15 ~ 0.35)，照片不會發紫，顏色自然明亮 */
             background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.35)), 
-                    url('https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00354.jpg') center/cover no-repeat;
+                        url('https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00354.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -114,17 +113,7 @@
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        .hero-slogan {
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            font-weight: 300;
-            border-top: 1px solid rgba(255,255,255,0.6);
-            border-bottom: 1px solid rgba(255,255,255,0.6);
-            padding: 8px 25px;
-            margin-top: 10px;
-        }
-
-        /* 4. 倒數計時器 Section */
+        /* 4. 倒數計時器 Section (無秒數版) */
         .countdown-section {
             padding: 60px 20px;
             background-color: var(--bg-warm);
@@ -160,7 +149,7 @@
 
         .timer-card {
             background: var(--card-white);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 0 20px rgba(91, 60, 196, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
             border-radius: 16px;
             padding: 20px 18px;
             display: flex;
@@ -168,7 +157,7 @@
             justify-content: center;
             gap: 15px;
             min-width: 140px;
-            border: 1px solid rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .timer-number {
@@ -203,10 +192,10 @@
         }
 
         .about-content {
-            background: #ffffff;
+            background: var(--card-white);
             padding: 40px 30px;
             border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(30, 27, 75, 0.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
             margin-top: 20px;
         }
 
@@ -232,14 +221,13 @@
             margin: 30px auto 0;
             overflow: hidden;
             border-radius: 20px;
-            box-shadow: 0 10px 35px rgba(30, 27, 75, 0.08);
-            background-color: var(--bg-warm); /* 消除黑框，與背景自然融合 */
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+            background-color: var(--bg-warm);
         }
 
         .slider-wrapper {
             display: flex;
             height: 100%;
-            /* 預設無動畫平滑過渡 */
         }
 
         .slide {
@@ -254,7 +242,7 @@
         .slide img {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain; /* 完整顯示，不切頭也不留黑框 */
+            object-fit: contain;
             border-radius: 12px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
         }
@@ -267,7 +255,7 @@
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(6px);
             color: var(--text-dark);
-            border: 1px solid rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             width: 44px;
             height: 44px;
             border-radius: 50%;
@@ -315,11 +303,12 @@
             width: 24px;
             border-radius: 12px;
         }
+
         /* 8. 婚禮詳情 V-Card Section */
         .details-section {
             padding: 80px 20px;
-            background-color: var(--bg-warm); /* 使用全頁背景變數 */
-            filter: brightness(0.95);         /* 自動產生微深色階 */
+            background-color: var(--bg-warm);
+            filter: brightness(0.95);
         }
 
         .v-card-container {
@@ -334,7 +323,7 @@
             background: var(--card-white);
             border-radius: 16px;
             padding: 35px 30px;
-            box-shadow: 0 10px 30px rgba(30, 27, 75, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
             border-left: 5px solid var(--primary-amber);
             text-align: left;
         }
@@ -362,11 +351,11 @@
             border-radius: 8px;
             font-size: 0.9rem;
             font-weight: 600;
-            transition: background 0.3s ease;
+            transition: opacity 0.3s ease;
         }
 
         .map-btn:hover {
-            background-color: #7C3AED;
+            opacity: 0.85;
         }
 
         /* 9. 隱藏式摺疊交通面板 (Accordion) */
@@ -375,10 +364,10 @@
         }
 
         details {
-            background: #ffffff;
+            background: var(--card-white);
             border-radius: 12px;
             padding: 15px 20px;
-            border: 1px solid rgba(91, 60, 196, 0.2);
+            border: 1px solid rgba(0, 0, 0, 0.08);
             margin-bottom: 10px;
         }
 
@@ -427,7 +416,7 @@
             background: var(--card-white);
             padding: 40px 30px;
             border-radius: 20px;
-            box-shadow: 0 10px 35px rgba(30, 27, 75, 0.08);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
         }
 
         .form-group {
@@ -454,24 +443,24 @@
         .form-control {
             width: 100%;
             padding: 12px 15px;
-            border: 1px solid #D8D3F3;
+            border: 1px solid rgba(0, 0, 0, 0.15);
             border-radius: 8px;
             font-size: 1rem;
             font-family: var(--font-zh);
             color: var(--text-dark);
-            background-color: #FAF8FF;
+            background-color: var(--bg-warm);
         }
 
         .form-control:focus {
             outline: none;
             border-color: var(--primary-amber);
             background-color: #ffffff;
-            box-shadow: 0 0 0 3px rgba(91, 60, 196, 0.15);
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
         }
 
         select.form-control {
             appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235B3CC4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23893f06' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right 15px center;
             background-size: 16px;
@@ -487,41 +476,43 @@
             font-size: 1.05rem;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: opacity 0.3s ease;
             letter-spacing: 2px;
         }
 
         .submit-btn:hover {
-            background-color: #4A2EB0;
+            opacity: 0.9;
         }
 
         .success-msg {
             display: none;
             padding: 20px;
-            background-color: #E0E7FF;
-            color: #3730A3;
+            background-color: var(--bg-warm);
+            color: var(--primary-amber);
             border-radius: 8px;
             text-align: center;
             margin-top: 20px;
             font-weight: 600;
+            border: 1px solid var(--primary-amber);
         }
 
+        /* 11. 頁尾修復：跟隨背景變數，不再死紫色 */
         footer {
             text-align: center;
-            padding: 30px 20px;
+            padding: 35px 20px;
             font-size: 0.85rem;
             color: var(--text-muted);
-            background-color: #E8E2FC;
-        }
-
-        @media (max-width: 768px) {
-            .photo-gallery { grid-template-columns: 1fr; }
+            background-color: var(--bg-warm);
+            filter: brightness(0.95);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         @media (max-width: 600px) {
             .hero-title-en { font-size: 2.8rem; }
             .hero-names { font-size: 1.8rem; }
-            .timer-card { min-width: 110px; padding: 15px 12px; }
+            .slider-container { height: 380px; }
+            .slider-btn { width: 38px; height: 38px; font-size: 0.9rem; }
+            .timer-card { min-width: 100px; padding: 15px 10px; }
             .timer-number { font-size: 2.2rem; }
             .v-card { padding: 25px 20px; }
             .rsvp-form { padding: 30px 20px; }
@@ -547,7 +538,7 @@
         <div class="hero-names">宇哲 &amp; 韋伶</div>
     </header>
 
-    <!-- 藝術倒數計時器 -->
+    <!-- 藝術倒數計時器 (無秒數) -->
     <section class="countdown-section">
         <div class="section-title">COUNTDOWN</div>
         <div class="section-subtitle">倒數期待這一天</div>
@@ -583,7 +574,7 @@
         </div>
     </section>
     
-   <!-- 婚紗相片輪播區塊 (無縫滑動版) -->
+    <!-- 婚紗相片輪播區塊 (無縫滑動版) -->
     <section id="gallery" class="gallery-section">
         <div class="section-title">GALLERY</div>
         <div class="section-subtitle">我們的婚紗照</div>
@@ -655,7 +646,7 @@
         </div>
     </section>
 
-    <!-- 出席回函 RSVP Section (隱藏式 Iframe 提交) -->
+    <!-- 出席回函 RSVP Section -->
     <section id="rsvp" class="rsvp-section">
         <div class="section-title">RSVP</div>
         <div class="section-subtitle">出席回函</div>
@@ -688,14 +679,16 @@
                 </label>
                 <input type="text" id="entry_attend" name="entry.2113314783" class="form-control" value="" placeholder="例：2位" required>
             </div>
+
             <!-- 欄位 4：素食人數 -->
             <div class="form-group">
-                <label class="form-label" for="veg">
-                    素食人數<span class="en">Vegetarian</span> *
+                <label class="form-label" for="entry_veg">
+                    素食人數<span class="en">VEGETARIAN</span> *
                 </label>
                 <input type="text" id="entry_veg" name="entry.1241370169" class="form-control" value="" placeholder="上題出席人數中，幾位素食，例：1位" required>
             </div>
-            <!-- 5. 是否需要嬰兒座椅 (entry.1240311188) -->
+
+            <!-- 欄位 5：是否需要兒童座椅 -->
             <div class="form-group">
                 <label class="form-label" for="entry_paper">
                     是否需要兒童座椅<span class="en">HIGH CHAIR NEEDED</span> *
@@ -706,12 +699,13 @@
                     <option value="否">否</option>
                 </select>
             </div>
+
             <!-- 欄位 6：給新人的祝福 -->
             <div class="form-group">
                 <label class="form-label" for="entry_note">
                     給新人的祝福<span class="en">DIET &amp; MESSAGE</span>
                 </label>
-                <input type="text" id="entry_note" name="entry.1471678889" class="form-control" value="" placeholder="如：葷/素食人數或想對我們說的話">
+                <input type="text" id="entry_note" name="entry.1471678889" class="form-control" value="" placeholder="如：想對我們說的話">
             </div>
 
             <button type="submit" class="submit-btn">確認送出 / SUBMIT</button>
@@ -721,11 +715,6 @@
             </div>
         </form>
     </section>
-    <!-- 全螢幕相片燈箱 Modal 結構（新增） -->
-    <div id="imageModal" class="modal" onclick="closeModal()">
-        <span class="modal-close">&times;</span>
-        <img class="modal-content" id="modalImage" alt="婚紗照全圖">
-    </div>
 
     <!-- Footer -->
     <footer>
@@ -734,7 +723,7 @@
 
     <!-- JavaScript 邏輯 -->
     <script>
-        // 倒數計時器（目標：2026年11月21日 17:30）
+        // 1. 倒數計時器（目標：2026年11月21日 17:30，已移除秒數）
         const targetDate = new Date('2026-11-21T17:30:00+08:00').getTime();
 
         function updateCountdown() {
@@ -759,7 +748,7 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 表單提交完成邏輯
+        // 2. 表單提交完成邏輯
         let submitted = false;
 
         function onFormSubmitted() {
@@ -771,27 +760,26 @@
             }, 6000);
             submitted = false;
         }
+
         // 🎠 3. 無縫流暢無限輪播 (Seamless Loop Slider)
         const wrapper = document.getElementById('sliderWrapper');
         const slides = document.querySelectorAll('.slide');
         const totalRealSlides = slides.length;
         const dotsContainer = document.getElementById('dotsContainer');
+        const sliderContainer = document.getElementById('sliderContainer');
         
-        let currentIndex = 1; // 從第一個真實 Slide 開始（索引 1）
+        let currentIndex = 1;
         let isTransitioning = false;
         let autoTimer = null;
 
-        // 初始化：複製第一個與最後一個 Slide 實現無縫順滑循環
         const firstClone = slides[0].cloneNode(true);
         const lastClone = slides[totalRealSlides - 1].cloneNode(true);
         
         wrapper.appendChild(firstClone);
         wrapper.insertBefore(lastClone, slides[0]);
         
-        // 設定初始 Transform
         wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-        // 生成小圓點
         function initDots() {
             dotsContainer.innerHTML = '';
             for (let i = 0; i < totalRealSlides; i++) {
@@ -838,21 +826,19 @@
             resetAutoPlay();
         }
 
-        // 監聽動畫結束：無縫瞬間切換 Clone 節點
         wrapper.addEventListener('transitionend', () => {
             isTransitioning = false;
-            if (currentIndex === 0) { // 滑到最前的假節點，瞬間移到最後真節點
+            if (currentIndex === 0) {
                 wrapper.style.transition = 'none';
                 currentIndex = totalRealSlides;
                 wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-            } else if (currentIndex === totalRealSlides + 1) { // 滑到最後的假節點，瞬間移到最前真節點
+            } else if (currentIndex === totalRealSlides + 1) {
                 wrapper.style.transition = 'none';
                 currentIndex = 1;
                 wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
             }
         });
 
-        // 定時播放（每 4.5 秒平滑切換）
         function startAutoPlay() {
             if (autoTimer) clearInterval(autoTimer);
             autoTimer = setInterval(() => {
@@ -865,110 +851,128 @@
             startAutoPlay();
         }
 
+        sliderContainer.addEventListener('mouseenter', () => clearInterval(autoTimer));
+        sliderContainer.addEventListener('mouseleave', startAutoPlay);
+
         initDots();
         startAutoPlay();
-        // 🎨 5. 高階「自訂顏色控制台」系統
-    const presets = {
-        purple: { name: '皇家藍紫', primary: '#5B3CC4', secondary: '#8B5CF6', bg: '#F3F0FF', text: '#1E1B4B' },
-        amber:  { name: '莫蘭迪暖陽', primary: '#D4A373', secondary: '#8DA399', bg: '#FAF8F5', text: '#2B2B2B' },
-        rose:   { name: '溫柔奶茶粉', primary: '#C48B71', secondary: '#A38F85', bg: '#FAF5F3', text: '#3A2E2B' },
-        blue:   { name: '經典霧灰藍', primary: '#5A738E', secondary: '#8DA1B3', bg: '#F2F5F8', text: '#1C2833' },
-        green:  { name: '森林橄欖綠', primary: '#556B2F', secondary: '#8F9779', bg: '#F5F7F2', text: '#222B18' },
-        wine:   { name: '勃艮第紅酒', primary: '#800020', secondary: '#B35A66', bg: '#FAF4F5', text: '#2B1216' }
-    };
 
-    function updateColorVal(varName, colorVal) {
-        document.documentElement.style.setProperty(varName, colorVal);
-    }
+        // 🎨 4. 高階「自訂顏色控制台」系統 (支援 6 變數調色)
+        const presets = {
+            amber:  { name: '莫蘭迪暖陽', primary: '#893f06', secondary: '#180101', bg: '#faf8f5', text: '#2b2b2b', card: '#ffffff', muted: '#605a88' },
+            purple: { name: '皇家藍紫', primary: '#5B3CC4', secondary: '#8B5CF6', bg: '#F3F0FF', text: '#1E1B4B', card: '#ffffff', muted: '#605A88' },
+            rose:   { name: '溫柔奶茶粉', primary: '#C48B71', secondary: '#A38F85', bg: '#FAF5F3', text: '#3A2E2B', card: '#ffffff', muted: '#85736C' },
+            blue:   { name: '經典霧灰藍', primary: '#5A738E', secondary: '#8DA1B3', bg: '#F2F5F8', text: '#1C2833', card: '#ffffff', muted: '#6B7A88' },
+            green:  { name: '森林橄欖綠', primary: '#556B2F', secondary: '#8F9779', bg: '#F5F7F2', text: '#222B18', card: '#ffffff', muted: '#6A735E' },
+            wine:   { name: '勃艮第紅酒', primary: '#800020', secondary: '#B35A66', bg: '#FAF4F5', text: '#2B1216', card: '#ffffff', muted: '#7A5B60' }
+        };
 
-    function applyPreset(key) {
-        const p = presets[key];
-        document.getElementById('picker-primary').value = p.primary;
-        document.getElementById('picker-secondary').value = p.secondary;
-        document.getElementById('picker-bg').value = p.bg;
-        document.getElementById('picker-text').value = p.text;
+        function updateColorVal(varName, colorVal) {
+            document.documentElement.style.setProperty(varName, colorVal);
+        }
 
-        updateColorVal('--primary-amber', p.primary);
-        updateColorVal('--secondary-sage', p.secondary);
-        updateColorVal('--bg-warm', p.bg);
-        updateColorVal('--text-dark', p.text);
-    }
-
-    function copyCssConfig() {
-        const primary = document.getElementById('picker-primary').value;
-        const secondary = document.getElementById('picker-secondary').value;
-        const bg = document.getElementById('picker-bg').value;
-        const text = document.getElementById('picker-text').value;
-
-        const cssText = `:root {\n  --primary-amber: ${primary};\n  --secondary-sage: ${secondary};\n  --bg-warm: ${bg};\n  --text-dark: ${text};\n}`;
-        navigator.clipboard.writeText(cssText);
-        alert('已複製挑選好的色彩 CSS！直接貼回 :root 即可：\n\n' + cssText);
-    }
-
-    // 建構控制台 DOM
-    window.addEventListener('DOMContentLoaded', () => {
-        const studio = document.createElement('div');
-        studio.id = 'colorStudio';
-        studio.style.cssText = `
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(12px);
-            padding: 16px 20px;
-            border-radius: 20px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.18);
-            border: 1px solid rgba(0,0,0,0.1);
-            font-family: sans-serif;
-            font-size: 0.85rem;
-            color: #333;
-            max-width: 310px;
-        `;
-
-        let presetBtnsHtml = '';
-        Object.keys(presets).forEach(key => {
+        function applyPreset(key) {
             const p = presets[key];
-            presetBtnsHtml += `<button onclick="applyPreset('${key}')" title="${p.name}" style="width:22px; height:22px; border-radius:50%; border:2px solid #fff; background:${p.primary}; cursor:pointer; box-shadow:0 2px 5px rgba(0,0,0,0.2);"></button>`;
+            document.getElementById('picker-primary').value = p.primary;
+            document.getElementById('picker-secondary').value = p.secondary;
+            document.getElementById('picker-bg').value = p.bg;
+            document.getElementById('picker-text').value = p.text;
+            document.getElementById('picker-card').value = p.card;
+            document.getElementById('picker-muted').value = p.muted;
+
+            updateColorVal('--primary-amber', p.primary);
+            updateColorVal('--secondary-sage', p.secondary);
+            updateColorVal('--bg-warm', p.bg);
+            updateColorVal('--text-dark', p.text);
+            updateColorVal('--card-white', p.card);
+            updateColorVal('--text-muted', p.muted);
+        }
+
+        function copyCssConfig() {
+            const primary = document.getElementById('picker-primary').value;
+            const secondary = document.getElementById('picker-secondary').value;
+            const bg = document.getElementById('picker-bg').value;
+            const text = document.getElementById('picker-text').value;
+            const card = document.getElementById('picker-card').value;
+            const muted = document.getElementById('picker-muted').value;
+
+            const cssText = `:root {\n  --primary-amber: ${primary};\n  --secondary-sage: ${secondary};\n  --bg-warm: ${bg};\n  --text-dark: ${text};\n  --card-white: ${card};\n  --text-muted: ${muted};\n}`;
+            navigator.clipboard.writeText(cssText);
+            alert('已複製搭配好的顏色 CSS！直接貼回 :root 即可：\n\n' + cssText);
+        }
+
+        // 建構控制台 DOM
+        window.addEventListener('DOMContentLoaded', () => {
+            const studio = document.createElement('div');
+            studio.id = 'colorStudio';
+            studio.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 9999;
+                background: rgba(255, 255, 255, 0.96);
+                backdrop-filter: blur(12px);
+                padding: 16px 20px;
+                border-radius: 20px;
+                box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+                border: 1px solid rgba(0,0,0,0.1);
+                font-family: sans-serif;
+                font-size: 0.85rem;
+                color: #333;
+                max-width: 320px;
+            `;
+
+            let presetBtnsHtml = '';
+            Object.keys(presets).forEach(key => {
+                const p = presets[key];
+                presetBtnsHtml += `<button onclick="applyPreset('${key}')" title="${p.name}" style="width:22px; height:22px; border-radius:50%; border:2px solid #fff; background:${p.primary}; cursor:pointer; box-shadow:0 2px 5px rgba(0,0,0,0.2);"></button>`;
+            });
+
+            studio.innerHTML = `
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; font-weight:bold; border-bottom:1px solid #eee; padding-bottom:8px;">
+                    <span>🎨 自由調色控制台</span>
+                    <span onclick="document.getElementById('colorStudio').style.display='none'" style="cursor:pointer; color:#999; font-size:1.1rem;">✕</span>
+                </div>
+                
+                <div style="margin-bottom:12px; display:flex; align-items:center; gap:6px;">
+                    <span style="font-size:0.75rem; color:#666;">預設風格：</span>
+                    <div style="display:flex; gap:6px; flex-wrap:wrap;">${presetBtnsHtml}</div>
+                </div>
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:12px;">
+                    <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                        <input type="color" id="picker-bg" value="#faf8f5" onchange="updateColorVal('--bg-warm', this.value)" style="border:none; width:26px; height:26px; cursor:pointer; background:none;">
+                        <span>全頁背景</span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                        <input type="color" id="picker-card" value="#ffffff" onchange="updateColorVal('--card-white', this.value)" style="border:none; width:26px; height:26px; cursor:pointer; background:none;">
+                        <span>卡片背景</span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                        <input type="color" id="picker-text" value="#2b2b2b" onchange="updateColorVal('--text-dark', this.value)" style="border:none; width:26px; height:26px; cursor:pointer; background:none;">
+                        <span>主要文字</span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                        <input type="color" id="picker-muted" value="#605A88" onchange="updateColorVal('--text-muted', this.value)" style="border:none; width:26px; height:26px; cursor:pointer; background:none;">
+                        <span>次要文字</span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                        <input type="color" id="picker-primary" value="#893f06" onchange="updateColorVal('--primary-amber', this.value)" style="border:none; width:26px; height:26px; cursor:pointer; background:none;">
+                        <span>主主題色</span>
+                    </label>
+                    <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+                        <input type="color" id="picker-secondary" value="#180101" onchange="updateColorVal('--secondary-sage', this.value)" style="border:none; width:26px; height:26px; cursor:pointer; background:none;">
+                        <span>副主題色</span>
+                    </label>
+                </div>
+
+                <button onclick="copyCssConfig()" style="width:100%; padding:8px; background:#893f06; color:#fff; border:none; border-radius:10px; font-weight:bold; cursor:pointer; font-size:0.8rem;">
+                    📋 複製我搭配好的顏色 CSS
+                </button>
+            `;
+
+            document.body.appendChild(studio);
         });
-
-        studio.innerHTML = `
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; font-weight:bold; border-bottom:1px solid #eee; padding-bottom:8px;">
-                <span>🎨 自由調色控制台</span>
-                <span onclick="document.getElementById('colorStudio').style.display='none'" style="cursor:pointer; color:#999; font-size:1.1rem;">✕</span>
-            </div>
-            
-            <div style="margin-bottom:12px; display:flex; align-items:center; gap:6px;">
-                <span style="font-size:0.75rem; color:#666;">快捷方案：</span>
-                <div style="display:flex; gap:6px; flex-wrap:wrap;">${presetBtnsHtml}</div>
-            </div>
-
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:12px;">
-                <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-                    <input type="color" id="picker-bg" value="#F3F0FF" onchange="updateColorVal('--bg-warm', this.value)" style="border:none; width:28px; height:28px; cursor:pointer; background:none;">
-                    <span>全頁背景底色</span>
-                </label>
-                <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-                    <input type="color" id="picker-text" value="#1E1B4B" onchange="updateColorVal('--text-dark', this.value)" style="border:none; width:28px; height:28px; cursor:pointer; background:none;">
-                    <span>主要文字顏色</span>
-                </label>
-                <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-                    <input type="color" id="picker-primary" value="#5B3CC4" onchange="updateColorVal('--primary-amber', this.value)" style="border:none; width:28px; height:28px; cursor:pointer; background:none;">
-                    <span>主主題色彩</span>
-                </label>
-                <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-                    <input type="color" id="picker-secondary" value="#8B5CF6" onchange="updateColorVal('--secondary-sage', this.value)" style="border:none; width:28px; height:28px; cursor:pointer; background:none;">
-                    <span>副主題色彩</span>
-                </label>
-            </div>
-
-            <button onclick="copyCssConfig()" style="width:100%; padding:8px; background:#5B3CC4; color:#fff; border:none; border-radius:10px; font-weight:bold; cursor:pointer; font-size:0.8rem;">
-                📋 複製我搭配好的顏色 CSS
-            </button>
-        `;
-
-        document.body.appendChild(studio);
-    });
     </script>
 </body>
 </html>
