@@ -508,10 +508,12 @@
         }
 
         @media (max-width: 600px) {
-            .hero {
-                /* 手機版優先對齊人物頭部頂端 */
-                background-position: center top !important;
-            }
+            /* 手機版：完整呈現全圖左右不裁切 + 高級模糊背景 */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
+                    url('https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00354.jpg') center top/contain no-repeat,
+                    url('https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00354.jpg') center/cover no-repeat;
+        }
             .hero-title-en { font-size: 2.8rem; }
             .hero-names { font-size: 1.8rem; }
             .slider-container { height: 380px; }
