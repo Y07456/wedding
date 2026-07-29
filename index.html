@@ -86,7 +86,7 @@
             height: 100vh;
             width: 100%;
             background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.35)), 
-                        url('https://raw.githubusercontent.com/Y07456/wedding/main/images/CDSC01031.jpg') center/cover no-repeat;
+                        url('https://raw.githubusercontent.com/Y07456/wedding/main/images/CDSC01031.jpg') center top/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -508,6 +508,10 @@
         }
 
         @media (max-width: 600px) {
+            .hero {
+                /* 手機版優先對齊人物頭部頂端 */
+                background-position: center top !important;
+            }
             .hero-title-en { font-size: 2.8rem; }
             .hero-names { font-size: 1.8rem; }
             .slider-container { height: 380px; }
