@@ -730,6 +730,11 @@
 
     <!-- JavaScript 邏輯 -->
     <script>
+        // 0. 強制網頁載入時停留在最頂端封面區塊
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
         // 1. 倒數計時器（目標：2026年11月21日 17:30，已移除秒數）
         const targetDate = new Date('2026-11-21T17:30:00+08:00').getTime();
 
@@ -774,18 +779,18 @@
         const totalRealSlides = slides.length;
         const dotsContainer = document.getElementById('dotsContainer');
         const sliderContainer = document.getElementById('sliderContainer');
-        
+    
         let currentIndex = 1;
         let isTransitioning = false;
         let autoTimer = null;
 
         const firstClone = slides[0].cloneNode(true);
         const lastClone = slides[totalRealSlides - 1].cloneNode(true);
-        
-        wrapper.appendChild(firstClone);
-        wrapper.insertBefore(lastClone, slides[0]);
-        
-        wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+    
+            wrapper.appendChild(firstClone);
+            wrapper.insertBefore(lastClone, slides[0]);
+    
+            wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
 
         function initDots() {
             dotsContainer.innerHTML = '';
@@ -793,7 +798,10 @@
                 const dot = document.createElement('div');
                 dot.classList.add('dot');
                 if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSlide(i + 1));
+                dot.addEventListener('click', (e) => {
+                    e.preventDefault(); // 防止點擊奪取頁面焦點
+                    goToSlide(i + 1);
+                });
                 dotsContainer.appendChild(dot);
             }
         }
@@ -832,7 +840,7 @@
             goToSlide(currentIndex - 1);
             resetAutoPlay();
         }
-
+    
         wrapper.addEventListener('transitionend', () => {
             isTransitioning = false;
             if (currentIndex === 0) {
