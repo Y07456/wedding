@@ -792,7 +792,7 @@
                 <label class="form-label" for="entry_contact">
                     您的電子信箱<span class="en">EMAIL</span> *
                 </label>
-                <input type="text" id="entry_contact" name="entry.2029044368" class="form-control" value="" placeholder="請輸入 Email" required>
+                <input type="email" id="entry_contact" name="entry.2029044368" class="form-control" value="" placeholder="請輸入 Email" required>
             </div>
 
             <!-- 欄位 3：出席人數 -->
@@ -841,11 +841,11 @@
             </div>
 
             <button type="submit" class="submit-btn">確認送出 / SUBMIT</button>
-
-            <div id="success_msg" class="success-msg">
-                感謝您的回覆！我們非常期待與您見面。
-            </div>
         </form>
+        <!-- 成功送出後顯示的感謝訊息（放在表單外部） -->
+        <div id="success_msg" class="success-msg">
+        🎉 感謝您的回覆！我們非常期待與您相見！
+        </div>
     </section>
     <!-- 藝術倒數計時器 (無秒數) -->
     <section class="countdown-section">
@@ -919,39 +919,38 @@
         let submitted = false;
 
         function onFormSubmitted() {
-            document.querySelector('.rsvp-form').reset();
+            const formEl = document.querySelector('.rsvp-form');
             const successEl = document.getElementById('success_msg');
-            successEl.style.display = 'block';
-            setTimeout(() => {
-                successEl.style.display = 'none';
-            }, 6000);
+
+            formEl.style.display = 'none';      // 隱藏表單輸入框
+            successEl.style.display = 'block';  // 感謝訊息永久顯示，不消失！
             submitted = false;
         }
-        // 💡 動態連動：根據「出席人數」更新「素食」與「兒童座椅」的最大選擇範圍
+        // 💡 動態連動：根據「出席人數」更新「素食」與「兒童座椅」的最大選擇範圍與預設狀態
         function updateSubOptions() {
-            const attendVal = parseInt(document.getElementById('entry_attend').value) || 0;
+            const attendVal = parseInt(document.getElementById('entry_attend').value);
             const vegSelect = document.getElementById('entry_veg');
             const chairSelect = document.getElementById('entry_paper');
 
-        // 清空原有選項
+            // 清空原有選項
             vegSelect.innerHTML = '';
             chairSelect.innerHTML = '';
 
-        // 若出席人數為 0，預設皆為 0 位
+            // 情境 A：若選擇 0 位（無法出席），自動帶入 0 位
             if (attendVal === 0) {
-            vegSelect.innerHTML = '<option value="0" selected>0 位</option>';
-            chairSelect.innerHTML = '<option value="0" selected>0 位</option>';
-            return;
+                vegSelect.innerHTML = '<option value="0" selected>0 位</option>';
+                chairSelect.innerHTML = '<option value="0" selected>0 位</option>';
+                return;
             }
 
-        // 動態生成 0 ~ attendVal 的選項
+            // 情境 B：選擇 1 位以上，預設保持提示狀態（請選擇...），強制賓客手動選擇
             vegSelect.innerHTML = '<option value="" disabled selected>請選擇素食人數</option>';
             chairSelect.innerHTML = '<option value="" disabled selected>請選擇兒童座椅數量</option>';
 
             for (let i = 0; i <= attendVal; i++) {
-            const optionText = `${i} 位`;
-            vegSelect.innerHTML += `<option value="${i}">${optionText}</option>`;
-            chairSelect.innerHTML += `<option value="${i}">${optionText}</option>`;
+                const optionText = `${i} 位`;
+                vegSelect.innerHTML += `<option value="${i}">${optionText}</option>`;
+                chairSelect.innerHTML += `<option value="${i}">${optionText}</option>`;
             }
         }
         // 🎠 3. 無縫流暢無限輪播 (Seamless Loop Slider)
