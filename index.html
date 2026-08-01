@@ -304,13 +304,35 @@
                 font-size: 2.2rem;
                 padding: 0 5px;
             }
+            /* 倒數計時器手機版修復：強制三張卡片不換行 */
             .timer-grid {
-                gap: 8px; /* 縮小三個卡片之間的間距 */
+                gap: 6px !important;              /* 縮小卡片之間的間距 */
+                flex-wrap: nowrap !important;     /* 💡 核心修復：強制禁止卡片換行到下一頁 */
+                width: 100%;
+                padding: 0 5px;
             }
+
             .timer-card {
-                padding: 12px 6px; /* 稍微縮小卡片邊界 */
+                min-width: 0 !important;          /* 取消固定最小寬度限制 */
+                flex: 1;                          /* 讓三張卡片平分畫面寬度 */
+                padding: 10px 4px !important;     /* 縮減卡片內距 */
+                gap: 6px !important;              /* 縮小卡片內數字與文字的間距 */
+            }
+
+            .timer-number {
+                font-size: 1.8rem !important;     /* 微調數字大小以適應小螢幕 */
+            }
+
+            .timer-label {
+                font-size: 0.75rem !important;    /* 微調標籤字體大小 */
+                white-space: nowrap !important;   /* 防字體斷行 */
+            }
+
+            .timer-divider {
+                height: 25px !important;          /* 稍微調短分隔線 */
             }
         }
+        
         .about-content {
             background: var(--card-white);
             padding: 40px 30px;
@@ -711,6 +733,7 @@
                 <div class="slide"><img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00352.jpg" alt="婚紗照 3"></div>
                 <div class="slide"><img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00366.jpg" alt="婚紗照 4"></div>
                 <div class="slide"><img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00282.jpg" alt="婚紗照 5"></div>
+                <div class="slide"><img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/CDSC01042.jpg" alt="婚紗照 6"></div>
             </div>
         </div>
 
