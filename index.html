@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>宇哲 & 韋伶 婚禮邀請函 | Wedding Invitation</title>
-    
+    <!-- 社群分享預覽設定 (LINE / Messenger / iMessage) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://y07456.github.io/wedding/">
+    <meta property="og:title" content="宇哲 & 韋伶 婚禮邀請函">
+    <meta property="og:description" content="誠摯邀請您參加我們的婚禮">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Y07456/wedding/main/images/CDSC01101.jpg">
     <!-- Google Fonts 導入 (包含多款字體) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -119,6 +124,38 @@
             background-color: var(--bg-warm);
             text-align: center;
         }
+        /* 倒數計時器下方的 Google 日曆按鈕 */
+        .countdown-action {
+            margin-top: 35px;
+        }
+
+        .calendar-btn-large {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: var(--primary-amber);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 30px; /* 圓角膠囊設計 */
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 6px 20px rgba(137, 63, 6, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .calendar-btn-large:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(137, 63, 6, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .calendar-btn-large {
+                width: 90%;
+                padding: 12px 20px;
+                font-size: 0.95rem;
+            }
+        }
 
         .section-title {
             font-family: var(--font-en);
@@ -190,7 +227,81 @@
             margin: 0 auto;
             text-align: center;
         }
+        /* 關於我們區塊內建 family-board 樣式 */
+        .family-board {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 35px;
+            padding-top: 30px;
+            border-top: 1px dashed rgba(137, 63, 6, 0.2);
+        }
 
+        .family-column {
+            flex: 1;
+            text-align: center;
+        }
+
+        .family-role {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+
+        .bride-groom-name {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--primary-amber);
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+
+        .parents-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .parents-label {
+            font-size: 0.75rem;
+            color: var(--text-dark);
+            opacity: 0.6;
+        }
+
+        .parents-name {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* 中間紅色囍字 */
+        .xi-symbol {
+            font-size: 2.8rem;
+            color: #c02626; /* 經典大紅 */
+            font-weight: bold;
+            line-height: 1;
+            padding: 0 15px;
+            user-select: none;
+            text-shadow: 0 2px 8px rgba(192, 38, 38, 0.15);
+        }
+
+        @media (max-width: 600px) {
+            .family-board {
+                gap: 10px;
+            }
+            .bride-groom-name {
+                font-size: 1.35rem;
+            }
+            .parents-name {
+                font-size: 0.85rem;
+            }
+            .xi-symbol {
+                font-size: 2.2rem;
+                padding: 0 5px;
+            }
+        }
         .about-content {
             background: var(--card-white);
             padding: 40px 30px;
@@ -543,30 +654,6 @@
         <div class="hero-names">宇哲 &amp; 韋伶</div>
     </header>
 
-    <!-- 藝術倒數計時器 (無秒數) -->
-    <section class="countdown-section">
-        <div class="section-title">COUNTDOWN</div>
-        <div class="section-subtitle">倒數期待這一天</div>
-
-        <div class="timer-grid">
-            <div class="timer-card">
-                <div class="timer-number" id="days">00</div>
-                <div class="timer-divider"></div>
-                <div class="timer-label">DAYS<br>天</div>
-            </div>
-            <div class="timer-card">
-                <div class="timer-number" id="hours">00</div>
-                <div class="timer-divider"></div>
-                <div class="timer-label">HOURS<br>時</div>
-            </div>
-            <div class="timer-card">
-                <div class="timer-number" id="minutes">00</div>
-                <div class="timer-divider"></div>
-                <div class="timer-label">MINS<br>分</div>
-            </div>
-        </div>
-    </section>
-
     <!-- 關於我們 Section -->
     <section id="about" class="about-section">
         <div class="section-title">ABOUT US</div>
@@ -574,8 +661,33 @@
 
         <div class="about-content">
             <p class="about-text">
-                兩個同屆的台南囡仔，轉了台北一圈，也去了歐洲看世界。經歷了無數次擦肩而過，最後還是被命運圈在一起，決定要牽手走一輩子！我們的愛情故事即將邁入新篇章，誠摯邀請最親愛的您，一起來見證我們的幸福起點。我們準備了台南辦桌南霸天「阿勇師」的手路菜，用最在地的澎湃美味，好好款待大家！
+                兩個同屆的台南囡仔，轉了台北一圈，也去了歐洲看世界。經歷了無數次擦肩而過，最後還是被命運圈在一起，決定要牽手走一輩子！我們的愛情故事即將邁入新篇章，誠摯邀請最親愛的您，一起品嘗在地的澎湃美味：南霸天「阿勇師」的辦桌手路菜！
             </p>
+            <!-- 新增：兩家新人與父母親屬對照看板 -->
+            <div class="family-board">
+                <!-- 左側：新郎家 -->
+                <div class="family-column">
+                    <div class="family-role">新郎</div>
+                    <div class="family-name bride-groom-name">宇哲</div>
+                    <div class="parents-group">
+                        <span class="parents-label">父母</span>
+                        <span class="parents-name">林福生 ‧ 許美華</span>
+                    </div>
+                </div>
+
+                <!-- 中間：經典紅囍字 -->
+                <div class="xi-symbol">囍</div>
+
+                <!-- 右側：新娘家 -->
+                <div class="family-column">
+                    <div class="family-role">新娘</div>
+                    <div class="family-name bride-groom-name">韋伶</div>
+                    <div class="parents-group">
+                        <span class="parents-label">父母</span>
+                        <span class="parents-name">陳志銘 ‧ 胡月萍</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     
@@ -608,14 +720,15 @@
         <div class="v-card-container">
             <div class="v-card">
                 <div class="v-card-title">❖ 時間與地點</div>
-                <div class="v-card-body">
-                    <strong>婚禮日期：</strong>2026 年 11 月 21 日（星期六）<br>
-                    <strong>入席時間：</strong>17:30 準時入席<br>
-                    <strong>宴客地點：</strong><span class="no-wrap">阿勇家漂亮莊園</span><br>
-                    <strong>莊園地址：</strong><span class="no-wrap">台南市歸仁區和順路二段303號</span>
-                    <br>
-                    <a href="https://www.google.com/maps/search/?api=1&query=%E9%98%BF%E5%8B%87%E5%AE%B6%E2%80%A7%E6%BC%82%E4%BA%AE%E8%8E%8A%E2%80%A7%E5%9C%90" target="_blank" class="map-btn">開啟 Google 地圖</a>
-                </div>
+                    <div class="v-card-body">
+                        <strong>婚禮日期：</strong>2026 年 11 月 21 日（星期六）<br>
+                        <strong>入席時間：</strong>17:30 迎賓入席<br>
+                        <strong>開席時間：</strong>18:00 準時開席<br>
+                        <strong>宴客地點：</strong><span class="no-wrap">阿勇家漂亮莊園</span><br>
+                        <strong>莊園地址：</strong><span class="no-wrap">台南市歸仁區和順路二段303號</span>
+                        <br>
+                        <a href="https://www.google.com/maps/search/?api=1&query=%E9%98%BF%E5%8B%87%E5%AE%B6%E2%80%A7%E6%BC%82%E4%BA%AE%E8%8E%8A%E2%80%A7%E5%9C%90" target="_blank" class="map-btn">開啟 Google 地圖</a>
+                    </div>
             </div>
 
             <div class="v-card">
@@ -669,20 +782,29 @@
                 <input type="text" id="entry_name" name="entry.1278734064" class="form-control" value="" placeholder="請輸入您的姓名(同行者由一位代表填寫即可)" required>
             </div>
 
-            <!-- 欄位 2：您的電話或信箱 -->
+            <!-- 欄位 2：您的電子信箱 -->
             <div class="form-group">
                 <label class="form-label" for="entry_contact">
-                    您的電話或信箱<span class="en">EMAIL OR PHONE NUMBER</span> *
+                    您的電子信箱<span class="en">EMAIL</span> *
                 </label>
                 <input type="text" id="entry_contact" name="entry.2029044368" class="form-control" value="" placeholder="請輸入 Email 或電話" required>
             </div>
 
             <!-- 欄位 3：出席人數 -->
             <div class="form-group">
-                <label class="form-label" for="entry_attend">
-                    出席人數<span class="en">ATTENDANCE</span> *
-                </label>
-                <input type="text" id="entry_attend" name="entry.2113314783" class="form-control" value="" placeholder="例：2位" required>
+                 <label class="form-label" for="entry_attend">
+                     出席人數<span class="en">ATTENDANCE</span> *
+                 </label>
+                 <select id="entry_attend" name="entry.2113314783" class="form-control" onchange="updateSubOptions()" required>
+                    <option value="" disabled selected>請選擇出席人數</option>
+                    <option value="0">0 位（無法出席，獻上祝福）</option>
+                    <option value="1">1 位</option>
+                    <option value="2">2 位</option>
+                    <option value="3">3 位</option>
+                    <option value="4">4 位</option>
+                    <option value="5">5 位</option>
+                    <option value="6">6 位</option>
+                </select>
             </div>
 
             <!-- 欄位 4：素食人數 -->
@@ -690,27 +812,27 @@
                 <label class="form-label" for="entry_veg">
                     素食人數<span class="en">VEGETARIAN</span> *
                 </label>
-                <input type="text" id="entry_veg" name="entry.1241370169" class="form-control" value="" placeholder="上題出席人數中，幾位素食，例：1位" required>
-            </div>
-
-            <!-- 欄位 5：是否需要兒童座椅 -->
-            <div class="form-group">
-                <label class="form-label" for="entry_paper">
-                    是否需要兒童座椅<span class="en">HIGH CHAIR NEEDED</span> *
-                </label>
-                <select id="entry_paper" name="entry.1240311188" class="form-control" required>
-                    <option value="" disabled selected>是否需要兒童座椅</option>
-                    <option value="是">是</option>
-                    <option value="否">否</option>
+                <select id="entry_veg" name="entry.1241370169" class="form-control" required>
+                    <option value="" disabled selected>請先選擇出席人數</option>
                 </select>
             </div>
 
-            <!-- 欄位 6：給新人的祝福 -->
+            <!-- 欄位 5：兒童座椅數量 (連動下拉選單) -->
+            <div class="form-group">
+                <label class="form-label" for="entry_paper">
+                    兒童座椅數量<span class="en">HIGH CHAIR NEEDED</span> *
+                </label>
+                <select id="entry_paper" name="entry.1240311188" class="form-control" required>
+                    <option value="" disabled selected>請先選擇出席人數</option>
+                </select>
+            </div>
+
+            <!-- 欄位 6：想說的話 -->
             <div class="form-group">
                 <label class="form-label" for="entry_note">
-                    給新人的祝福<span class="en">DIET &amp; MESSAGE</span>
+                    想說的話<span class="en">MESSAGE</span>
                 </label>
-                <input type="text" id="entry_note" name="entry.1471678889" class="form-control" value="" placeholder="如：想對我們說的話">
+                <input type="text" id="entry_note" name="entry.1471678889" class="form-control" value="" placeholder="寫下想說的話">
             </div>
 
             <button type="submit" class="submit-btn">確認送出 / SUBMIT</button>
@@ -720,7 +842,36 @@
             </div>
         </form>
     </section>
+    <!-- 藝術倒數計時器 (無秒數) -->
+    <section class="countdown-section">
+        <div class="section-title">COUNTDOWN</div>
+        <div class="section-subtitle">倒數期待這一天</div>
 
+        <div class="timer-grid">
+            <div class="timer-card">
+                <div class="timer-number" id="days">00</div>
+                <div class="timer-divider"></div>
+                <div class="timer-label">DAYS<br>天</div>
+            </div>
+            <div class="timer-card">
+                <div class="timer-number" id="hours">00</div>
+                <div class="timer-divider"></div>
+                <div class="timer-label">HOURS<br>時</div>
+            </div>
+            <div class="timer-card">
+                <div class="timer-number" id="minutes">00</div>
+                <div class="timer-divider"></div>
+                <div class="timer-label">MINS<br>分</div>
+            </div>
+        </div>
+        <!-- 📅 倒數計時器下方的加入 Google 日曆按鈕 -->
+        <div class="countdown-action">
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E5%AE%87%E5%93%B2+%26+%E9%9F%8B%E4%BC%B6+%E5%A9%9A%E7%A6%AE%E6%99%9A%E5%AE%B4&dates=20261121T093000Z/20261121T133000Z&details=%E8%AA%A0%E8%AA%90%E5%98%80%E8%AB%8B%E6%82%A8%E4%B8%80%E8%B5%B7%E4%BE%86%E8%A6%8B%E7%85%A7%E6%88%91%E5%80%91%E7%9A%84%E5%B9%B8%E7%A6%8F%E8%B5%B7%E9%BB%9E%EF%BC%81%0A17%3A30+%E8%BF%8E%E8%B3%93%E5%85%A5%E5%B8%AD%0A18%3A00+%E6%BA%96%E6%99%82%E9%96%8B%E5%B8%AD&location=%E9%98%BF%E5%8B%87%E5%AE%B6%E6%BC%82%E4%BA%AE%E8%8E%8A%E2%80%A7%E5%8F%B0%E5%8D%97%E5%B8%82%E6%AD%B8%E4%BB%81%E5%8D%80%E5%92%8C%E9%A0%86%E8%B7%AF%E4%BA%8C%E6%AE%B5303%E8%99%9B" target="_blank" class="calendar-btn-large">
+            📅 將婚禮行程加入 Google 日曆
+            </a>
+        </div>
+    </section>
+    
     <!-- Footer -->
     <footer>
         <p>Yu-Che &amp; Wei-Ling Wedding © 2026</p>
@@ -735,7 +886,7 @@
         window.scrollTo(0, 0);
 
         // 1. 倒數計時器（目標：2026年11月21日 17:30，已移除秒數）
-        const targetDate = new Date('2026-11-21T17:30:00+08:00').getTime();
+        const targetDate = new Date('2026-11-21T18:00:00+08:00').getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
@@ -771,7 +922,33 @@
             }, 6000);
             submitted = false;
         }
+        // 💡 動態連動：根據「出席人數」更新「素食」與「兒童座椅」的最大選擇範圍
+        function updateSubOptions() {
+            const attendVal = parseInt(document.getElementById('entry_attend').value) || 0;
+            const vegSelect = document.getElementById('entry_veg');
+            const chairSelect = document.getElementById('entry_paper');
 
+        // 清空原有選項
+            vegSelect.innerHTML = '';
+            chairSelect.innerHTML = '';
+
+        // 若出席人數為 0，預設皆為 0 位
+            if (attendVal === 0) {
+            vegSelect.innerHTML = '<option value="0" selected>0 位</option>';
+            chairSelect.innerHTML = '<option value="0" selected>0 位</option>';
+            return;
+            }
+
+        // 動態生成 0 ~ attendVal 的選項
+            vegSelect.innerHTML = '<option value="" disabled selected>請選擇素食人數</option>';
+            chairSelect.innerHTML = '<option value="" disabled selected>請選擇兒童座椅數量</option>';
+
+            for (let i = 0; i <= attendVal; i++) {
+            const optionText = `${i} 位`;
+            vegSelect.innerHTML += `<option value="${i}">${optionText}</option>`;
+            chairSelect.innerHTML += `<option value="${i}">${optionText}</option>`;
+            }
+        }
         // 🎠 3. 無縫流暢無限輪播 (Seamless Loop Slider)
         const wrapper = document.getElementById('sliderWrapper');
         const slides = document.querySelectorAll('.slide');
