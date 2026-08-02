@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frank & Wei-Ling Wedding Invitation</title>
+    <!-- Social Sharing Preview (LINE / Messenger / iMessage) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://y07456.github.io/wedding/en.html">
+    <meta property="og:title" content="Frank & Wei-Ling Wedding Invitation">
+    <meta property="og:description" content="We warmly invite you to celebrate our wedding banquet with us.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Y07456/wedding/main/images/CDSC01101.jpg">
+    <!-- Google Fonts Import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Noto+Sans+TC:wght@300;400;600&family=Noto+Serif+TC:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* 1. Global Variables */
+        :root {
+            --primary-amber: #893f06;
+            --secondary-sage: #893f06;
+            --bg-warm: #faf8f5;
+            --text-dark: #2b2b2b;
+            --card-white: #ffffff;
+            --text-muted: #893f06;
+            --font-en: 'Cormorant Garamond', serif;
+            --font-zh: 'Noto Serif TC', serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-en), var(--font-zh);
+            background-color: var(--bg-warm);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .no-wrap {
+            white-space: nowrap !important;
+            display: inline-block;
+        }
+
+        /* 2. Glassmorphism Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-amber);
+        }
+
+        /* 3. Hero Cover Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.35)), 
+                        url('https://raw.githubusercontent.com/Y07456/wedding/main/images/CDSC01031.jpg') center top/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 0 20px;
+        }
+
+        .hero-title-en {
+            font-family: var(--font-en);
+            font-size: 3.5rem;
+            font-style: italic;
+            font-weight: 400;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero-names {
+            font-size: 2.2rem;
+            letter-spacing: 6px;
+            font-weight: 300;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* 4. Countdown Section */
+        .countdown-section {
+            padding-top: 30px;
+            padding-bottom: 70px;
+            padding-left: 20px;
+            padding-right: 20px;
+            text-align: center;
+        }
+        
+        .countdown-action {
+            margin-top: 35px;
+        }
+
+        .calendar-btn-large {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: var(--primary-amber);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 6px 20px rgba(137, 63, 6, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .calendar-btn-large:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(137, 63, 6, 0.3);
+        }
+
+        .section-title {
+            font-family: var(--font-en);
+            font-size: 2.2rem;
+            color: var(--primary-amber);
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: var(--secondary-sage);
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .timer-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timer-card {
+            background: var(--card-white);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border-radius: 16px;
+            padding: 20px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            min-width: 140px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .timer-number {
+            font-family: var(--font-en);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-amber);
+            line-height: 1;
+        }
+
+        .timer-divider {
+            width: 1px;
+            height: 35px;
+            background-color: var(--primary-amber);
+            opacity: 0.3;
+        }
+
+        .timer-label {
+            font-family: var(--font-en);
+            font-size: 0.9rem;
+            color: var(--secondary-sage);
+            letter-spacing: 1px;
+            text-align: center;
+            white-space: nowrap;
+            font-weight: 600;
+        }
+
+        /* 5. About Us Section */
+        .about-section {
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .family-board {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 35px;
+            padding-top: 30px;
+            border-top: 1px dashed rgba(137, 63, 6, 0.2);
+        }
+
+        .family-column {
+            flex: 1;
+            text-align: center;
+        }
+
+        .family-role {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .bride-groom-name {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--primary-amber);
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .parents-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .parents-name {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .about-content {
+            background: var(--card-white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+            margin-top: 20px;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            line-height: 2;
+            text-align: justify;
+        }
+
+        /* 6. Gallery Section */
+        .gallery-section {
+            padding: 80px 20px;
+            background-color: var(--bg-warm);
+            filter: brightness(0.97);
+            text-align: center;
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 750px;
+            height: 500px;
+            margin: 30px auto 0;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+            background-color: var(--bg-warm);
+        }
+
+        .slider-wrapper {
+            display: flex;
+            height: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .slide img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(6px);
+            color: var(--text-dark);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .slider-btn:hover {
+            background: #ffffff;
+            color: var(--primary-amber);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-btn { left: 15px; }
+        .next-btn { right: 15px; }
+
+        .dots-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--secondary-sage);
+            opacity: 0.35;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            opacity: 1;
+            background-color: var(--primary-amber);
+            width: 24px;
+            border-radius: 12px;
+        }
+
+        /* 8. Details V-Card Section */
+        .details-section {
+            padding: 80px 20px;
+            background-color: var(--bg-warm);
+            filter: brightness(0.95);
+            text-align: center;
+        }
+
+        .v-card-container {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .v-card {
+            background: var(--card-white);
+            border-radius: 16px;
+            padding: 35px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border-left: 5px solid var(--primary-amber);
+            text-align: left;
+        }
+
+        .v-card-title {
+            font-size: 1.25rem;
+            color: var(--primary-amber);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .v-card-body {
+            font-size: 1rem;
+            color: var(--text-dark);
+            line-height: 1.9;
+        }
+
+        .map-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: var(--secondary-sage);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+        }
+
+        .map-btn:hover {
+            opacity: 0.85;
+        }
+
+        /* 9. Transportation Accordion */
+        .accordion-wrapper {
+            margin-top: 15px;
+        }
+
+        details {
+            background: var(--card-white);
+            border-radius: 12px;
+            padding: 15px 20px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            margin-bottom: 10px;
+        }
+
+        summary {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-amber);
+            cursor: pointer;
+            outline: none;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "+";
+            font-size: 1.4rem;
+            color: var(--secondary-sage);
+        }
+
+        details[open] summary::after {
+            content: "−";
+        }
+
+        .accordion-content {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(0, 0, 0, 0.1);
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* 10. RSVP Section */
+        .rsvp-section {
+            padding: 80px 20px 20px 20px;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .rsvp-form {
+            background: var(--card-white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--text-dark);
+            background-color: var(--bg-warm);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-amber);
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23893f06' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-amber);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            letter-spacing: 2px;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        .success-msg {
+            display: none;
+            padding: 20px;
+            background-color: var(--bg-warm);
+            color: var(--primary-amber);
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 600;
+            border: 1px solid var(--primary-amber);
+        }
+
+        /* 11. Footer */
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background-color: var(--bg-warm);
+            filter: brightness(0.95);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.35)), 
+                            url('https://raw.githubusercontent.com/Y07456/wedding/main/images/CDSC01101.jpg') center top/cover no-repeat !important;
+            }
+            .hero-title-en { font-size: 2.8rem; }
+            .hero-names { font-size: 1.8rem; }
+            .slider-container { height: 380px; }
+            .slider-btn { width: 38px; height: 38px; font-size: 0.9rem; }
+            .v-card { padding: 25px 20px; }
+            .rsvp-form { padding: 30px 20px; }
+            .family-board { gap: 10px; }
+            .bride-groom-name { font-size: 1.35rem; }
+            .parents-name { font-size: 0.85rem; }
+            
+            .timer-grid {
+                gap: 6px !important;
+                flex-wrap: nowrap !important;
+                width: 100%;
+                padding: 0 5px;
+            }
+
+            .timer-card {
+                min-width: 0 !important;
+                flex: 1;
+                padding: 10px 4px !important;
+                gap: 6px !important;
+            }
+
+            .timer-number {
+                font-size: 1.8rem !important;
+            }
+
+            .timer-label {
+                font-size: 0.75rem !important;
+                white-space: nowrap !important;
+            }
+
+            .timer-divider {
+                height: 25px !important;
+            }
+
+            .calendar-btn-large {
+                width: 90%;
+                padding: 12px 20px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Glassmorphism Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#about" class="nav-link">About Us</a>
+            <a href="#gallery" class="nav-link">Gallery</a>
+            <a href="#details" class="nav-link">Details</a>
+            <a href="#rsvp" class="nav-link">RSVP</a>
+        </div>
+    </nav>
+
+    <!-- Hero Cover Section -->
+    <header class="hero">
+        <div class="hero-title-en">Wedding Invitation</div>
+        <div class="hero-names">Frank &amp; Wei-Ling</div>
+    </header>
+
+    <!-- About Us Section -->
+    <section id="about" class="about-section">
+        <div class="section-title">ABOUT US</div>
+        <div class="section-subtitle">Our Story</div>
+        
+        <div class="family-board">
+            <!-- Groom Family -->
+            <div class="family-column">
+                <div class="family-role">GROOM</div>
+                <div class="family-name bride-groom-name">Yu-Che Lin</div>
+                <div class="parents-group">
+                    <span class="parents-name">Fu-Sheng Lin &amp; Mei-Hua Hsu</span>
+                </div>
+            </div>
+
+            <!-- Bride Family -->
+            <div class="family-column">
+                <div class="family-role">BRIDE</div>
+                <div class="family-name bride-groom-name">Wei-Ling Chen</div>
+                <div class="parents-group">
+                    <span class="parents-name">Chih-Ming Chen &amp; Yueh-Ping Hu</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-content">
+            <p class="about-text">
+                Two Tainan locals born in the same year, our paths crossed in Taipei and took us across Europe. After countless near-misses, destiny brought us together to embark on a lifelong journey. As our love story turns a new page, we warmly invite you to join us in savoring local delicacies: traditional hand-crafted banquet cuisine by Chef A-Yong!
+            </p>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Slider -->
+    <section id="gallery" class="gallery-section">
+        <div class="section-title">GALLERY</div>
+        <div class="section-subtitle">Wedding Album</div>
+        
+        <div class="slider-container" id="sliderContainer">
+            <button class="slider-btn prev-btn" onclick="prevSlide()">&#10094;</button>
+            <button class="slider-btn next-btn" onclick="nextSlide()">&#10095;</button>
+
+            <div class="slider-wrapper" id="sliderWrapper">
+                <div class="slide"><img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/CDSC01044.jpg" alt="Wedding Photo 1"></div>
+                <div class="slide"><img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00183.jpg" alt="Wedding Photo 2"></div>
+                <div class="slide"><img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00352.jpg" alt="Wedding Photo 3"></div>
+                <div class="slide"><img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00366.jpg" alt="Wedding Photo 4"></div>
+                <div class="slide"><img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/DSC00282.jpg" alt="Wedding Photo 5"></div>
+                <div class="slide"><img src="https://raw.githubusercontent.com/Y07456/wedding/main/images/CDSC01042.jpg" alt="Wedding Photo 6"></div>
+            </div>
+        </div>
+
+        <div class="dots-container" id="dotsContainer"></div>
+    </section>
+
+    <!-- Details Section -->
+    <section id="details" class="details-section">
+        <div class="section-title">DETAILS</div>
+        <div class="section-subtitle">Event Info &amp; Transportation</div>
+
+        <div class="v-card-container">
+            <div class="v-card">
+                <div class="v-card-title">❖ Date &amp; Location</div>
+                <div class="v-card-body">
+                    <strong>Date:</strong> Saturday, November 21, 2026<br>
+                    <strong>Reception:</strong> 17:00 Welcome &amp; Photo Session<br>
+                    <strong>Banquet:</strong> 18:00 Banquet Starts<br>
+                    <strong>Venue:</strong> <span class="no-wrap">A-Yong's Beautiful Villa</span><br>
+                    <strong>Address:</strong> <span class="no-wrap">No. 303, Sec. 2, Heshun Rd., Guiren Dist., Tainan City</span>
+                    <br>
+                    <a href="https://www.google.com/maps/search/?api=1&query=%E9%98%BF%E5%8B%87%E5%AE%B6%E2%80%A7%E6%BC%82%E4%BA%AE%E8%8E%8A%E2%80%A7%E5%9C%90" target="_blank" class="map-btn">Open Google Maps</a>
+                </div>
+            </div>
+
+            <div class="v-card">
+                <div class="v-card-title">❖ Parking Information</div>
+                <div class="v-card-body">
+                    After entering through the main gate of the villa, drive straight to the end to reach the designated guest parking lot.
+                </div>
+            </div>
+
+            <div class="v-card">
+                <div class="v-card-title">❖ Transportation Guide</div>
+                <div class="accordion-wrapper">
+                    <details>
+                        <summary>By High-Speed Rail (HSR) or TRA Train</summary>
+                        <div class="accordion-content">
+                            Arrive at <span class="no-wrap">Tainan HSR Station</span> or <span class="no-wrap">Shalun TRA Station</span>. Take a taxi from the station for about 8–10 minutes to reach <span class="no-wrap">A-Yong's Beautiful Villa</span>.
+                        </div>
+                    </details>
+                    <details>
+                        <summary>From Downtown Tainan Station</summary>
+                        <div class="accordion-content">
+                            If arriving at <span class="no-wrap">Tainan Train Station</span>, take a local TRA train to <span class="no-wrap">Shalun Station</span>, or take a taxi directly to Heshun Rd., Guiren Dist. (approx. 25–30 minutes drive).
+                        </div>
+                    </details>
+                    <details>
+                        <summary>By Car / Driving Directions</summary>
+                        <div class="accordion-content">
+                            1. <strong>National Freeway No. 1</strong>: Exit at <span class="no-wrap">Dawan Interchange</span>, drive along Taizi Rd. for about 10 minutes to reach the venue.<br>
+                            2. <strong>National Freeway No. 3 / Expressway 86</strong>: Exit at <span class="no-wrap">Guiren Interchange</span>, drive along Route 39 and Heshun Rd. to reach the venue.<br>
+                            ※ Guest parking is available at the end of the main driveway inside the villa.
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="rsvp-section">
+        <div class="section-title">RSVP</div>
+        <div class="section-subtitle">Response Form</div>
+
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){onFormSubmitted();}"></iframe>
+
+        <form class="rsvp-form" action="https://docs.google.com/forms/d/e/1FAIpQLSeET8Ha9IMZDvDGzhPeO3ym3I-lLFmqf5CFzrprIOaR-4r_UA/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+            
+            <!-- Field 1: Full Name -->
+            <div class="form-group">
+                <label class="form-label" for="entry_name">
+                    Full Name *
+                </label>
+                <input type="text" id="entry_name" name="entry.1278734064" class="form-control" value="" placeholder="Your full name (One representative per party)" required>
+            </div>
+
+            <!-- Field 2: Email -->
+            <div class="form-group">
+                <label class="form-label" for="entry_contact">
+                    Email Address *
+                </label>
+                <input type="email" id="entry_contact" name="entry.2029044368" class="form-control" value="" placeholder="Your email address" required>
+            </div>
+
+            <!-- Field 3: Attendance -->
+            <div class="form-group">
+                 <label class="form-label" for="entry_attend">
+                     Number of Guests *
+                 </label>
+                 <select id="entry_attend" name="entry.2113314783" class="form-control" onchange="updateSubOptions()" required>
+                    <option value="" disabled selected>Please select attendance</option>
+                    <option value="0">0 (Unable to attend, sending best wishes)</option>
+                    <option value="1">1 Guest</option>
+                    <option value="2">2 Guests</option>
+                    <option value="3">3 Guests</option>
+                    <option value="4">4 Guests</option>
+                    <option value="5">5 Guests</option>
+                    <option value="6">6 Guests</option>
+                </select>
+            </div>
+
+            <!-- Field 4: Vegetarian -->
+            <div class="form-group">
+                <label class="form-label" for="entry_veg">
+                    Vegetarian Meals *
+                </label>
+                <select id="entry_veg" name="entry.1241370169" class="form-control" required>
+                    <option value="" disabled selected>Please select attendance first</option>
+                </select>
+            </div>
+
+            <!-- Field 5: High Chair Needed -->
+            <div class="form-group">
+                <label class="form-label" for="entry_paper">
+                    High Chairs Needed *
+                </label>
+                <select id="entry_paper" name="entry.1240311188" class="form-control" required>
+                    <option value="" disabled selected>Please select attendance first</option>
+                </select>
+            </div>
+
+            <!-- Field 6: Message -->
+            <div class="form-group">
+                <label class="form-label" for="entry_note">
+                    Message / Dietary Restrictions
+                </label>
+                <input type="text" id="entry_note" name="entry.1471678889" class="form-control" value="" placeholder="Dietary requirements or wishes for the couple">
+            </div>
+
+            <button type="submit" class="submit-btn">SUBMIT RESPONSE</button>
+        </form>
+
+        <div id="success_msg" class="success-msg">
+            🎉 Thank you for your response! We look forward to celebrating with you!
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="countdown-section">
+        <div class="section-title">COUNTDOWN</div>
+        <div class="section-subtitle">Counting Down to the Big Day</div>
+
+        <div class="timer-grid">
+            <div class="timer-card">
+                <div class="timer-number" id="days">00</div>
+                <div class="timer-divider"></div>
+                <div class="timer-label">DAYS</div>
+            </div>
+            <div class="timer-card">
+                <div class="timer-number" id="hours">00</div>
+                <div class="timer-divider"></div>
+                <div class="timer-label">HOURS</div>
+            </div>
+            <div class="timer-card">
+                <div class="timer-number" id="minutes">00</div>
+                <div class="timer-divider"></div>
+                <div class="timer-label">MINS</div>
+            </div>
+        </div>        
+
+        <!-- Google Calendar Button (English Version) -->
+        <div class="countdown-action">
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Frank+%26+Wei-Ling+Wedding+Banquet&dates=20261121T170000/20261121T210000&ctz=Asia/Taipei&details=17%3A00+Welcome+%26+Reception%0A18%3A00+Banquet+Starts%0A(Suggested%3A+Set+notification+1+day+before)&location=A-Yong%27s+Beautiful+Villa,+No.+303,+Sec.+2,+Heshun+Rd.,+Guiren+Dist.,+Tainan+City" target="_blank" class="calendar-btn-large">
+                📅 Add to Google Calendar
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>Frank &amp; Wei-Ling Wedding © 2026</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // 0. Force scroll to top on page reload
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+
+        // 1. Countdown Timer (Target: November 21, 2026, 17:30 UTC+8)
+        const targetDate = new Date('2026-11-21T17:30:00+08:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+            } else {
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 2. Form Submission Handler
+        let submitted = false;
+
+        function onFormSubmitted() {
+            const formEl = document.querySelector('.rsvp-form');
+            const successEl = document.getElementById('success_msg');
+
+            formEl.style.display = 'none';
+            successEl.style.display = 'block';
+            submitted = false;
+        }
+
+        // Dynamic Options for RSVP
+        function updateSubOptions() {
+            const attendVal = parseInt(document.getElementById('entry_attend').value);
+            const vegSelect = document.getElementById('entry_veg');
+            const chairSelect = document.getElementById('entry_paper');
+
+            vegSelect.innerHTML = '';
+            chairSelect.innerHTML = '';
+
+            if (attendVal === 0) {
+                vegSelect.innerHTML = '<option value="0" selected>0 Guests</option>';
+                chairSelect.innerHTML = '<option value="0" selected>0 High Chairs</option>';
+                return;
+            }
+
+            vegSelect.innerHTML = '<option value="" disabled selected>Select vegetarian meals</option>';
+            chairSelect.innerHTML = '<option value="" disabled selected>Select high chairs needed</option>';
+
+            for (let i = 0; i <= attendVal; i++) {
+                vegSelect.innerHTML += `<option value="${i}">${i} ${i === 1 ? 'Guest' : 'Guests'}</option>`;
+                chairSelect.innerHTML += `<option value="${i}">${i} ${i === 1 ? 'Chair' : 'Chairs'}</option>`;
+            }
+        }
+
+        // 3. Infinite Seamless Slider
+        const wrapper = document.getElementById('sliderWrapper');
+        const slides = document.querySelectorAll('.slide');
+        const totalRealSlides = slides.length;
+        const dotsContainer = document.getElementById('dotsContainer');
+        const sliderContainer = document.getElementById('sliderContainer');
+        
+        let currentIndex = 1;
+        let isTransitioning = false;
+        let autoTimer = null;
+
+        const firstClone = slides[0].cloneNode(true);
+        const lastClone = slides[totalRealSlides - 1].cloneNode(true);
+        
+        wrapper.appendChild(firstClone);
+        wrapper.insertBefore(lastClone, slides[0]);
+        
+        wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        function initDots() {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalRealSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    goToSlide(i + 1);
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateDots() {
+            const realIndex = (currentIndex - 1 + totalRealSlides) % totalRealSlides;
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === realIndex);
+            });
+        }
+
+        function goToSlide(index, animated = true) {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            currentIndex = index;
+
+            if (animated) {
+                wrapper.style.transition = 'transform 0.7s cubic-bezier(0.25, 1, 0.5, 1)';
+            } else {
+                wrapper.style.transition = 'none';
+            }
+
+            wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+            updateDots();
+        }
+
+        function nextSlide() {
+            if (isTransitioning) return;
+            goToSlide(currentIndex + 1);
+            resetAutoPlay();
+        }
+
+        function prevSlide() {
+            if (isTransitioning) return;
+            goToSlide(currentIndex - 1);
+            resetAutoPlay();
+        }
+        
+        wrapper.addEventListener('transitionend', () => {
+            isTransitioning = false;
+            if (currentIndex === 0) {
+                wrapper.style.transition = 'none';
+                currentIndex = totalRealSlides;
+                wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+            } else if (currentIndex === totalRealSlides + 1) {
+                wrapper.style.transition = 'none';
+                currentIndex = 1;
+                wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+        });
+
+        function startAutoPlay() {
+            if (autoTimer) clearInterval(autoTimer);
+            autoTimer = setInterval(() => {
+                nextSlide();
+            }, 4500);
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoTimer);
+            startAutoPlay();
+        }
+
+        sliderContainer.addEventListener('mouseenter', () => clearInterval(autoTimer));
+        sliderContainer.addEventListener('mouseleave', startAutoPlay);
+
+        initDots();
+        startAutoPlay();
+    </script>
+</body>
+</html>
