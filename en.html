@@ -481,87 +481,34 @@
             line-height: 1.8;
         }
 
-        /* 10. RSVP Section */
+        /* 10. 出席回函 RSVP Section (額滿展示版) */
         .rsvp-section {
             padding: 80px 20px 20px 20px;
             max-width: 650px;
             margin: 0 auto;
+            text-align: center;
         }
 
-        .rsvp-form {
+        .full-card {
             background: var(--card-white);
-            padding: 40px 30px;
+            padding: 45px 30px;
             border-radius: 20px;
             box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(137, 63, 6, 0.15);
         }
 
-        .form-group {
-            margin-bottom: 25px;
-            text-align: left;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 0.95rem;
+        .full-card-title {
+            font-size: 1.4rem;
+            color: var(--primary-amber);
             font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 8px;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid rgba(0, 0, 0, 0.15);
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: inherit;
-            color: var(--text-dark);
-            background-color: var(--bg-warm);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-amber);
-            background-color: #ffffff;
-            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
-        }
-
-        select.form-control {
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23893f06' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-            background-size: 16px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 14px;
-            background-color: var(--primary-amber);
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
+            margin-bottom: 15px;
             letter-spacing: 2px;
         }
 
-        .submit-btn:hover {
-            opacity: 0.9;
-        }
-
-        .success-msg {
-            display: none;
-            padding: 20px;
-            background-color: var(--bg-warm);
-            color: var(--primary-amber);
-            border-radius: 8px;
-            text-align: center;
-            margin-top: 20px;
-            font-weight: 600;
-            border: 1px solid var(--primary-amber);
+        .full-card-text {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            line-height: 2;
         }
 
         /* 11. Footer */
@@ -752,81 +699,18 @@
         </div>
     </section>
 
-    <!-- RSVP Section -->
+    <!-- 出席回函 RSVP Section (報名額滿卡片) -->
     <section id="rsvp" class="rsvp-section">
         <div class="section-title">RSVP</div>
-        <div class="section-subtitle">Response Form</div>
+        <div class="section-subtitle">****</div>
 
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){onFormSubmitted();}"></iframe>
-
-        <form class="rsvp-form" action="https://docs.google.com/forms/d/e/1FAIpQLSeET8Ha9IMZDvDGzhPeO3ym3I-lLFmqf5CFzrprIOaR-4r_UA/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
-            
-            <!-- Field 1: Full Name -->
-            <div class="form-group">
-                <label class="form-label" for="entry_name">
-                    Full Name *
-                </label>
-                <input type="text" id="entry_name" name="entry.1278734064" class="form-control" value="" placeholder="Your full name (One representative per party)" required>
+        <div class="rsvp-closed-card">
+            <div class="closed-icon">💌</div>
+            <div class="closed-title">Thank You</div>
+            <div class="closed-text">
+                Our wedding RSVP has reached maximum capacity.。<br>
+                Thank you all so much for your love and support. We can't wait to celebrate with you on our big day!
             </div>
-
-            <!-- Field 2: Email -->
-            <div class="form-group">
-                <label class="form-label" for="entry_contact">
-                    Email Address *
-                </label>
-                <input type="email" id="entry_contact" name="entry.2029044368" class="form-control" value="" placeholder="Your email address" required>
-            </div>
-
-            <!-- Field 3: Attendance -->
-            <div class="form-group">
-                 <label class="form-label" for="entry_attend">
-                     Number of Guests *
-                 </label>
-                 <select id="entry_attend" name="entry.2113314783" class="form-control" onchange="updateSubOptions()" required>
-                    <option value="" disabled selected>Please select attendance</option>
-                    <option value="0">0 (Unable to attend, sending best wishes)</option>
-                    <option value="1">1 Guest</option>
-                    <option value="2">2 Guests</option>
-                    <option value="3">3 Guests</option>
-                    <option value="4">4 Guests</option>
-                    <option value="5">5 Guests</option>
-                    <option value="6">6 Guests</option>
-                </select>
-            </div>
-
-            <!-- Field 4: Vegetarian -->
-            <div class="form-group">
-                <label class="form-label" for="entry_veg">
-                    Vegetarian Meals *
-                </label>
-                <select id="entry_veg" name="entry.1241370169" class="form-control" required>
-                    <option value="" disabled selected>Please select attendance first</option>
-                </select>
-            </div>
-
-            <!-- Field 5: High Chair Needed -->
-            <div class="form-group">
-                <label class="form-label" for="entry_paper">
-                    High Chairs Needed *
-                </label>
-                <select id="entry_paper" name="entry.1240311188" class="form-control" required>
-                    <option value="" disabled selected>Please select attendance first</option>
-                </select>
-            </div>
-
-            <!-- Field 6: Message -->
-            <div class="form-group">
-                <label class="form-label" for="entry_note">
-                    Message / Dietary Restrictions
-                </label>
-                <input type="text" id="entry_note" name="entry.1471678889" class="form-control" value="" placeholder="Dietary requirements or wishes for the couple">
-            </div>
-
-            <button type="submit" class="submit-btn">SUBMIT RESPONSE</button>
-        </form>
-
-        <div id="success_msg" class="success-msg">
-            🎉 Thank you for your response! We look forward to celebrating with you!
         </div>
     </section>
 
