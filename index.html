@@ -793,85 +793,21 @@
             </div>
         </div>
     </section>
-
-    <!-- 出席回函 RSVP Section -->
+    <!-- 出席回函 RSVP Section (報名額滿卡片) -->
     <section id="rsvp" class="rsvp-section">
         <div class="section-title">RSVP</div>
         <div class="section-subtitle">出席回函</div>
 
-        <!-- 隱藏式 iframe 防止頁面跳轉 -->
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){onFormSubmitted();}"></iframe>
-
-        <form class="rsvp-form" action="https://docs.google.com/forms/d/e/1FAIpQLSeET8Ha9IMZDvDGzhPeO3ym3I-lLFmqf5CFzrprIOaR-4r_UA/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
-            
-            <!-- 欄位 1：請問您的大名 -->
-            <div class="form-group">
-                <label class="form-label" for="entry_name">
-                    請問您的大名<span class="en">YOUR NAME</span> *
-                </label>
-                <input type="text" id="entry_name" name="entry.1278734064" class="form-control" value="" placeholder="請輸入您的姓名(同行者由一位代表填寫即可)" required>
+        <div class="rsvp-closed-card">
+            <div class="closed-icon">💌</div>
+            <div class="closed-title">感謝大家</div>
+            <div class="closed-text">
+                我們的婚禮出席回函已達到預定人數上限<br>
+                非常感謝各位親朋好友的祝福與愛護，期待在宴會當天與大家相見！
             </div>
-
-            <!-- 欄位 2：您的電子信箱 -->
-            <div class="form-group">
-                <label class="form-label" for="entry_contact">
-                    您的電子信箱<span class="en">EMAIL</span> *
-                </label>
-                <input type="email" id="entry_contact" name="entry.2029044368" class="form-control" value="" placeholder="請輸入 Email" required>
-            </div>
-
-            <!-- 欄位 3：出席人數 -->
-            <div class="form-group">
-                 <label class="form-label" for="entry_attend">
-                     出席人數<span class="en">ATTENDANCE</span> *
-                 </label>
-                 <select id="entry_attend" name="entry.2113314783" class="form-control" onchange="updateSubOptions()" required>
-                    <option value="" disabled selected>請選擇出席人數</option>
-                    <option value="0">0 位（無法出席，獻上祝福）</option>
-                    <option value="1">1 位</option>
-                    <option value="2">2 位</option>
-                    <option value="3">3 位</option>
-                    <option value="4">4 位</option>
-                    <option value="5">5 位</option>
-                    <option value="6">6 位</option>
-                </select>
-            </div>
-
-            <!-- 欄位 4：素食人數 -->
-            <div class="form-group">
-                <label class="form-label" for="entry_veg">
-                    素食人數<span class="en">VEGETARIAN</span> *
-                </label>
-                <select id="entry_veg" name="entry.1241370169" class="form-control" required>
-                    <option value="" disabled selected>請先選擇出席人數</option>
-                </select>
-            </div>
-
-            <!-- 欄位 5：兒童座椅數量 (連動下拉選單) -->
-            <div class="form-group">
-                <label class="form-label" for="entry_paper">
-                    兒童座椅數量<span class="en">HIGH CHAIR NEEDED</span> *
-                </label>
-                <select id="entry_paper" name="entry.1240311188" class="form-control" required>
-                    <option value="" disabled selected>請先選擇出席人數</option>
-                </select>
-            </div>
-
-            <!-- 欄位 6：想說的話 -->
-            <div class="form-group">
-                <label class="form-label" for="entry_note">
-                    想說的話<span class="en">MESSAGE</span>
-                </label>
-                <input type="text" id="entry_note" name="entry.1471678889" class="form-control" value="" placeholder="如有食物過敏請備註，或給新人的祝福">
-            </div>
-
-            <button type="submit" class="submit-btn">確認送出 / SUBMIT</button>
-        </form>
-        <!-- 成功送出後顯示的感謝訊息（放在表單外部） -->
-        <div id="success_msg" class="success-msg">
-        🎉 感謝您的回覆！我們非常期待與您相見！
         </div>
     </section>
+   
     <!-- 藝術倒數計時器 (無秒數) -->
     <section class="countdown-section">
         <div class="section-title">COUNTDOWN</div>
